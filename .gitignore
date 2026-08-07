@@ -1,0 +1,12 @@
+# Tooling / editor
+.frolic-session.json
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# Node / build (not used yet, safe to keep)
+node_modules/
+dist/
+.netlify/
