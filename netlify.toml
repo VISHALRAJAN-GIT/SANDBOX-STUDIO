@@ -7,3 +7,9 @@
   for = "/ok_leave_it_i_need_a_new_vedio_processed.mp4"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Entrance video — short cache so it propagates quickly if you swap the file
+[[headers]]
+  for = "/OK_SEPERATE_THE_FIRST_SEC_FR_processed_processed.mp4"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
