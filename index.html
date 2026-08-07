@@ -8,6 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.pexels.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -23,7 +24,7 @@
       <ul class="nav__links" id="navLinks">
         <li><a href="#home" class="is-active">Home</a></li>
         <li><a href="#products">Products</a></li>
-        <li><a href="#features">Features</a></li>
+        <li><a href="#services">Services</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#comparison">Compare</a></li>
         <li><a href="#workflow">Process</a></li>
@@ -41,15 +42,98 @@
     Start building your pages here.
   -->
   <main class="page">
-    <!-- Home page video background -->
-    <div class="page__bg" aria-hidden="true">
-      <video class="page__video" autoplay muted loop playsinline preload="auto" tabindex="-1">
-        <source src="ok_leave_it_i_need_a_new_vedio_processed.mp4" type="video/mp4" />
-      </video>
-      <div class="page__scrim"></div>
-    </div>
+    <!-- Home · video background lives only here -->
+    <section class="home" id="home" aria-label="Home">
+      <div class="page__bg" aria-hidden="true">
+        <video class="page__video" autoplay muted loop playsinline preload="auto" tabindex="-1">
+          <source src="ok_leave_it_i_need_a_new_vedio_processed.mp4" type="video/mp4" />
+        </video>
+        <div class="page__scrim"></div>
+      </div>
+    </section>
+    <!-- Products · 3D carousel -->
+    <section class="section product" id="products" aria-labelledby="productsTitle">
+      <div class="product__stage">
+        <div class="carousel" id="carousel">
+          <div class="carousel__wheel" id="carouselWheel"></div>
+          <div class="carousel__hud">
+            <button class="carousel__btn" type="button" data-carousel="prev" aria-label="Previous card">←</button>
+            <span class="carousel__progress" id="carouselProgress">01 / 12</span>
+            <button class="carousel__btn" type="button" data-carousel="next" aria-label="Next card">→</button>
+          </div>
+          <p class="carousel__hint">Drag or scroll horizontally · click the front card to inspect</p>
+        </div>
+      </div>
+      <div class="product__note">
+        <span class="product__note-mark" aria-hidden="true">✦</span>
+        <p class="product__note-text">Every interface in this showroom was designed and built by us — pixel by pixel, in our own studio.</p>
+      </div>
+    </section>
+
+    <!-- Services · Sandbox Lab interactive showcase -->
+    <section class="section services" id="services" aria-labelledby="servicesTitle">
+      <div class="section__inner">
+        <header class="section__head">
+          <p class="section__label">Services · Sandbox Lab</p>
+          <h2 class="section__title" id="servicesTitle">Building the future, one digital experience at a time.</h2>
+          <p class="section__sub">Twelve experiments brewing in the studio. Flip a card to read its spec sheet — click the back to return, or open the lab notes for the full story.</p>
+        </header>
+      </div>
+
+      <div class="cards" id="servicesCards" role="group" aria-label="Service experiments"></div>
+    </section>
   </main>
 
+  <!-- Service experiment · fullscreen expansion -->
+  <div class="labmodal" id="labModal" aria-hidden="true">
+    <div class="labmodal__backdrop" data-lab-close></div>
+    <div class="labmodal__panel" role="dialog" aria-modal="true" aria-label="Service details">
+      <div class="labmodal__visual" id="labModalVisual"></div>
+      <div class="labmodal__body" id="labModalBody"></div>
+      <div class="labmodal__controls">
+        <button class="labmodal__btn" type="button" data-lab="prev" aria-label="Previous service">←</button>
+        <button class="labmodal__btn" type="button" data-lab="close" aria-label="Close service notes">✕</button>
+        <button class="labmodal__btn" type="button" data-lab="next" aria-label="Next service">→</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen viewer -->
+  <div class="viewer" id="viewer" aria-hidden="true">
+    <div class="viewer__backdrop" data-viewer-close></div>
+    <div class="viewer__panel" role="dialog" aria-modal="true" aria-label="Website preview">
+      <div class="viewer__frame" id="viewerFrame">
+        <img class="viewer__img" id="viewerImg" alt="" draggable="false" />
+      </div>
+      <div class="viewer__meta">
+        <div class="viewer__caption">
+          <span class="viewer__index" id="viewerIndex">01 / 12</span>
+          <span class="viewer__name" id="viewerName"></span>
+        </div>
+        <div class="viewer__controls">
+          <button class="viewer__btn" type="button" data-viewer="prev" aria-label="Previous">←</button>
+          <button class="viewer__btn" type="button" data-viewer="zoomIn" aria-label="Zoom in">+</button>
+          <button class="viewer__btn" type="button" data-viewer="zoomOut" aria-label="Zoom out">−</button>
+          <button class="viewer__btn" type="button" data-viewer="close" aria-label="Close preview">✕</button>
+          <button class="viewer__btn" type="button" data-viewer="next" aria-label="Next">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login gate · entrance overlay (first 2s of the intro video) -->
+  <div class="gate" id="gate" aria-label="Entering the studio">
+    <video class="gate__video" autoplay muted playsinline preload="auto" tabindex="-1" aria-hidden="true">
+      <source src="OK_SEPERATE_THE_FIRST_SEC_FR_processed_processed.mp4#t=0,2" type="video/mp4" />
+    </video>
+    <div class="gate__scrim" aria-hidden="true"></div>
+    <p class="gate__label">sandbox</p>
+    <span class="gate__bar" aria-hidden="true"></span>
+    <button class="gate__skip" type="button">Skip intro</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
