@@ -192,7 +192,9 @@
   }
 
   function layout() {
-    var cardW = Math.min(stage.clientWidth - 24, Math.max(stage.clientWidth * 0.52, 420), 760);
+    var cw = stage.clientWidth || 560;
+    var cardW = Math.min(cw - 24, Math.max(cw * 0.52, 420), 760);
+    if (!(cardW > 0)) cardW = 560;
     spacing = cardW * 0.86;
     stage.style.setProperty('--cw', cardW + 'px');
     render();
@@ -437,6 +439,8 @@
   build();
   layout();
   updateProgress();
+  window.addEventListener('load', layout);
+  window.requestAnimationFrame(layout);
 })();
 
 /* ---------- services · sandbox lab interactive showcase ---------- */
@@ -446,138 +450,72 @@
   var gsap = window.gsap;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var imgBase = 'https://images.pexels.com/photos/';
+  var imgBase = 'https://images.unsplash.com/photo-';
   var services = [
     {
-      num: '01', motif: 'ai', name: 'AI Solutions',
-      tag: 'Intelligence layer',
-      desc: 'LLM-powered products trained on your own data and workflows.',
-      problem: 'Generic AI tools force your business into their mould. You end up adapting processes to the model instead of the model to you.',
-      solution: 'We design purpose-built AI systems — retrieval, reasoning, and generation — tuned to your data, your tone, and your operations.',
-      features: ['Custom AI assistants', 'RAG pipelines on your data', 'Model selection & tuning', 'Guardrails & evaluation'],
-      tech: ['LLMs', 'RAG', 'Python', 'OpenAI'],
-      img: '16587314/pexels-photo-16587314.jpeg',
-      cta: 'Design an AI solution'
-    },
-    {
-      num: '02', motif: 'auto', name: 'AI Automation',
-      tag: 'Workflow engine',
-      desc: 'Repetitive operations that run themselves — from inbox to CRM to reports.',
-      problem: 'Your team burns hours on repetitive work: data entry, follow-ups, triage, reporting. It scales poorly and errors creep in.',
-      solution: 'We connect your tools into self-running workflows where an AI layer makes decisions and hands off only what needs a human.',
-      features: ['Multi-step agent workflows', 'CRM / inbox / calendar glue', 'Scheduled intelligence runs', 'Human-in-the-loop checkpoints'],
-      tech: ['AI Agents', 'Zapier', 'n8n', 'APIs'],
-      img: '1181244/pexels-photo-1181244.jpeg',
-      cta: 'Automate my workflow'
-    },
-    {
-      num: '03', motif: 'chat', name: 'AI Chatbots',
-      tag: 'Always-on support',
-      desc: 'Support agents that never sleep, trained on your product and brand.',
-      problem: 'Support queues grow while questions repeat. Off-the-shelf bots give scripted answers that frustrate customers.',
-      solution: 'We build chatbots grounded in your docs, history, and pricing — resolving most tickets instantly and escalating gracefully.',
-      features: ['Brand-trained responses', '24/7 availability', 'Seamless human handoff', 'Conversation analytics'],
-      tech: ['RAG', 'Live chat', 'WhatsApp', 'Web'],
-      img: '16380905/pexels-photo-16380905.jpeg',
-      cta: 'Deploy a chatbot'
-    },
-    {
-      num: '04', motif: 'web', name: 'Web Applications',
+      num: '01', motif: 'web', name: 'Web Applications',
       tag: 'Fast by default',
       desc: 'High-performance sites and web apps built for speed and conversions.',
       problem: 'A slow, template-looking website erodes trust and costs you sales before a visitor even reads your offer.',
       solution: 'We ship responsive, accessible builds with clean architecture, fast loads, and a conversion path designed into every page.',
-      features: ['Core Web Vitals tuned', 'Responsive & accessible', 'Headless-ready stacks', 'Conversion-focused copy'],
-      tech: ['HTML/CSS/JS', 'React', 'Vercel', 'CMS'],
-      img: '38544/imac-apple-mockup-app-38544.jpeg',
+      features: ['Core Web Vitals tuned', 'Responsive & accessible', 'Headless-ready stacks', 'Conversion-focused build', 'Ongoing performance budget'],
+      tech: ['HTML/CSS/JS', 'React', 'Vercel', 'Headless CMS'],
+      img: '1760670399462-f5e479452c27',
       cta: 'Build my website'
     },
     {
-      num: '05', motif: 'code', name: 'Custom Software',
-      tag: 'Built around you',
-      desc: 'Internal tools, dashboards, and systems that fit your workflow exactly.',
-      problem: 'Off-the-shelf software makes you compromise. You bend your process to fit the license you bought.',
-      solution: 'We engineer bespoke systems — dashboards, portals, integrations — that mirror how you actually work and scale as you do.',
-      features: ['Tailored dashboards', 'Legacy integrations', 'Clean, testable code', 'Documented handover'],
-      tech: ['Node.js', 'PostgreSQL', 'REST', 'Cloud'],
-      img: '907487/pexels-photo-907487.jpeg',
-      cta: 'Scope my system'
+      num: '02', motif: 'seo', name: 'SEO',
+      tag: 'Found on Google',
+      desc: 'Search-first strategy, technical fixes, and content that earns rankings and clicks.',
+      problem: 'A brilliant website is useless if nobody finds it. Poor structure, slow pages, and thin content keep you buried on page three.',
+      solution: 'We audit, fix, and build — technical SEO, keyword-led content, and authority signals that compound month after month.',
+      features: ['Technical SEO audits', 'Keyword & intent research', 'On-page optimization', 'Local SEO & Google Business', 'Monthly ranking reports'],
+      tech: ['Search Console', 'Screaming Frog', 'Ahrefs', 'Schema.org'],
+      img: '1460925895917-afdab827c52f',
+      cta: 'Rank my business'
     },
     {
-      num: '06', motif: 'seo', name: 'SEO Growth',
-      tag: 'Compounding visibility',
-      desc: 'Technical foundations and a content engine that grow organic traffic steadily.',
-      problem: 'Most "SEO" is guesswork and black-hat tricks that get sites penalised. Sustainable growth needs a real system.',
-      solution: 'We fix technical foundations, structure content around real search intent, and measure everything so wins compound.',
-      features: ['Technical audits & fixes', 'Intent-based content engine', 'Keyword architecture', 'Transparent reporting'],
-      tech: ['GA4', 'Search Console', 'Ahrefs', 'Content Ops'],
-      img: '139387/pexels-photo-139387.jpeg',
-      cta: 'Grow my traffic'
+      num: '03', motif: 'chat', name: 'AI Chatbots',
+      tag: 'Always-on support',
+      desc: 'Support agents trained on your product and brand — resolving most tickets before a human sees them.',
+      problem: 'Support queues grow while questions repeat. Off-the-shelf bots give scripted answers that frustrate customers.',
+      solution: 'We build chatbots grounded in your docs, history, and pricing — resolving most tickets instantly and escalating gracefully.',
+      features: ['Brand-trained responses', '24/7 availability', 'Seamless human handoff', 'Conversation analytics', 'Retraining on your latest docs'],
+      tech: ['RAG', 'Live chat', 'WhatsApp', 'Web'],
+      img: '1573164713988-8665fc963095',
+      cta: 'Deploy a chatbot'
     },
     {
-      num: '07', motif: 'cloud', name: 'Cloud Solutions',
-      tag: 'Scale without ops',
-      desc: 'Infrastructure that deploys itself, scales on demand, and stays affordable.',
-      problem: 'Managing servers, deployments, and scaling eats engineering time and clouds your product roadmap.',
-      solution: 'We design cloud architecture with automated deploys, autoscaling, and observability so you ship without ops anxiety.',
-      features: ['CI/CD pipelines', 'Autoscaling & CDN', 'Observability & alerting', 'Cost optimisation'],
-      tech: ['AWS', 'Docker', 'Netlify', 'Terraform'],
-      img: '4486718/pexels-photo-4486718.jpeg',
-      cta: 'Modernise my cloud'
+      num: '04', motif: 'auto', name: 'AI Automation',
+      tag: 'Workflow engine',
+      desc: 'Repetitive operations that run themselves — from inbox to CRM to reports.',
+      problem: 'Your team burns hours on repetitive work: data entry, follow-ups, triage, reporting. It scales poorly and errors creep in.',
+      solution: 'We connect your tools into self-running workflows where an AI layer makes decisions and hands off only what needs a human.',
+      features: ['Multi-step agent workflows', 'CRM / inbox / calendar glue', 'Scheduled intelligence runs', 'Human-in-the-loop checkpoints', 'Cost & usage dashboards'],
+      tech: ['AI Agents', 'n8n', 'Zapier', 'APIs'],
+      img: '1716436329836-208bea5a55e6',
+      cta: 'Automate my workflow'
     },
     {
-      num: '08', motif: 'ux', name: 'UI/UX Design',
-      tag: 'Interfaces people love',
-      desc: 'Research-backed design systems and interfaces that make products feel obvious.',
-      problem: 'Interfaces that look fine but feel clunky drive users away. Design without research is decoration.',
-      solution: 'We design from behaviour — flows, wireframes, and systems that reduce friction and make the right action the easy one.',
-      features: ['UX research & flows', 'Design systems', 'Interactive prototypes', 'Usability testing'],
-      tech: ['Figma', 'Design Tokens', 'Prototyping', 'Analytics'],
-      img: '9558775/pexels-photo-9558775.jpeg',
-      cta: 'Redesign my product'
-    },
-    {
-      num: '09', motif: 'mobile', name: 'Mobile Apps',
-      tag: 'Pocket-native',
-      desc: 'Native-quality iOS and Android apps that feel at home in the hand.',
-      problem: 'A slow, janky app does more damage than no app at all — users uninstall within days.',
-      solution: 'We design and ship store-ready apps with offline support, secure auth, and payments built in from day one.',
-      features: ['iOS & Android from one codebase', 'Store launch & review support', 'Offline & push-ready', 'Payments & analytics wired in'],
-      tech: ['Flutter', 'React Native', 'Swift', 'Kotlin'],
-      img: '1092644/pexels-photo-1092644.jpeg',
-      cta: 'Build my mobile app'
-    },
-    {
-      num: '10', motif: 'shop', name: 'E-commerce',
+      num: '05', motif: 'shop', name: 'E-commerce',
       tag: 'Stores that sell',
-      desc: 'Conversion-focused storefronts with checkout that feels effortless.',
+      desc: 'Conversion-focused storefronts with a checkout that feels effortless.',
       problem: 'Confusing navigation and slow checkout quietly kill sales — most carts are abandoned before purchase.',
       solution: 'We build fast, brand-true storefronts with streamlined checkout, smart search, and recovery flows that bring shoppers back.',
-      features: ['Custom storefronts', 'Headless Shopify / WooCommerce', 'Payments, tax & shipping setup', 'Abandoned-cart recovery'],
+      features: ['Custom storefronts', 'Headless Shopify / WooCommerce', 'Payments, tax & shipping setup', 'Abandoned-cart recovery', 'Conversion tracking & A/B ready'],
       tech: ['Shopify', 'WooCommerce', 'Stripe', 'Next.js'],
-      img: '5632402/pexels-photo-5632402.jpeg',
+      img: '1556742049-0cfed4f6a45d',
       cta: 'Launch my store'
     },
     {
-      num: '11', motif: 'social', name: 'Social Media & Marketing',
-      tag: 'Growth engine',
-      desc: 'Content and campaigns that build an audience and turn it into pipeline.',
-      problem: 'Great products go unnoticed without distribution — scattered posts and random ads waste budget and time.',
-      solution: 'We wire analytics, content, and campaigns into one measured growth engine that compounds month over month.',
-      features: ['Content calendars & creative', 'Paid social campaigns', 'Email & newsletter flows', 'Conversion tracking & reporting'],
-      tech: ['Meta Ads', 'Google Ads', 'GA4', 'Mailchimp'],
-      img: '5426401/pexels-photo-5426401.jpeg',
-      cta: 'Grow my audience'
-    },
-    {
-      num: '12', motif: 'care', name: 'Support & Maintenance',
+      num: '06', motif: 'care', name: 'Support & Maintenance',
       tag: 'Long-term care',
       desc: 'Sites and apps that stay fast, safe, and current — without babysitting.',
       problem: 'Software rots. Outdated dependencies, silent downtime, and creeping issues turn your product into a liability.',
       solution: 'We run proactive care plans — monitoring, updates, backups, and a human on call when it matters most.',
-      features: ['Uptime monitoring & alerts', 'Security patches & backups', 'Performance reviews', 'Priority response'],
-      tech: ['Uptime Robot', 'Sentry', 'GitHub Actions', 'AWS'],
-      img: '7947951/pexels-photo-7947951.jpeg',
+      features: ['Uptime monitoring & alerts', 'Security patches & backups', 'Performance reviews', 'Priority response', 'Monthly improvement sprint'],
+      tech: ['Sentry', 'GitHub Actions', 'Uptime Robot', 'Cloud'],
+      img: '1558494949-ef010cbdcc31',
       cta: 'Start a care plan'
     }
   ];
@@ -592,7 +530,7 @@
   var idx = 0;
   var modalOpen = false;
   var entered = false;
-  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var effect = 'fold';
 
   function pad(n) { return String(n).padStart(2, '0'); }
   function chip(html) { return '<span class="labmodal__chip">' + html + '</span>'; }
@@ -640,48 +578,50 @@
     return '<div class="motif motif--' + key + '">' + inner + '</div>';
   }
 
+  function imgHTML(item) {
+    return '<img class="scard__img" src="' + imgBase + item.img + '?auto=format&fit=crop&w=900&q=70" srcset="' + imgBase + item.img + '?auto=format&fit=crop&w=600&q=70 600w, ' + imgBase + item.img + '?auto=format&fit=crop&w=900&q=70 900w" sizes="(max-width: 40rem) 92vw, (max-width: 60rem) 46vw, 30vw" alt="" loading="lazy" decoding="async" draggable="false" />';
+  }
+
   function build() {
     services.forEach(function (item, i) {
       var card = document.createElement('div');
-      card.className = 'flipcard';
+      card.className = 'scard scard--' + effect;
       card.tabIndex = 0;
-      card.setAttribute('aria-label', item.name + ' — ' + item.tag + '. Flip the card or open the lab notes.');
-      card.innerHTML =
-        '<div class="flipcard__inner">' +
-          '<div class="flipcard__face flipcard__face--front">' +
-            '<img class="flipcard__img" src="' + imgBase + item.img + '?auto=compress&cs=tinysrgb&w=900" srcset="' + imgBase + item.img + '?auto=compress&cs=tinysrgb&w=600 600w, ' + imgBase + item.img + '?auto=compress&cs=tinysrgb&w=900 900w" sizes="(max-width: 40rem) 92vw, (max-width: 60rem) 46vw, 30vw" alt="" loading="lazy" decoding="async" draggable="false" />' +
-            '<span class="flipcard__num">' + item.num + '</span>' +
-            '<span class="flipcard__hint" aria-hidden="true">flip</span>' +
-            '<span class="flipcard__title">' +
-              '<span class="flipcard__name">' + item.name + '</span>' +
-              '<span class="flipcard__tag">' + item.tag + '</span>' +
-            '</span>' +
-          '</div>' +
-          '<div class="flipcard__face flipcard__face--back">' +
-            '<span class="flipcard__tag">' + item.tag + '</span>' +
-            '<span class="flipcard__name">' + item.name + '</span>' +
-            '<p class="flipcard__specs-label">Specifications</p>' +
-            '<ul class="flipcard__specs">' +
-              item.features.map(function (f) { return '<li>' + f + '</li>'; }).join('') +
-            '</ul>' +
-            '<button class="flipcard__notes" type="button">Full notes <span aria-hidden="true">↗</span></button>' +
-          '</div>' +
-        '</div>';
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-expanded', 'false');
+      card.setAttribute('aria-label', item.name + ' — ' + item.tag + '. Open the card or read the lab notes.');
+
+      var front = imgHTML(item);
+      front +=
+        '<span class="scard__num">' + item.num + '</span>' +
+        '<span class="scard__hint" aria-hidden="true">open</span>' +
+        '<span class="scard__title"><span class="scard__name">' + item.name + '</span><span class="scard__tag">' + item.tag + '</span></span>';
+
+      var back =
+        '<span class="scard__tag">' + item.tag + '</span>' +
+        '<span class="scard__name">' + item.name + '</span>' +
+        '<p class="scard__specs-label">What you get</p>' +
+        '<ul class="scard__specs">' + item.features.map(function (f) { return '<li>' + f + '</li>'; }).join('') + '</ul>' +
+        '<button class="scard__notes" type="button">Lab notes <span aria-hidden="true">↗</span></button>';
+
+      card.innerHTML = '<div class="scard__front">' + front + '</div><div class="scard__back">' + back + '</div>';
       cards.appendChild(card);
 
-      if (!finePointer) {
-        card.addEventListener('click', function (e) {
-          if (e.target.closest('.flipcard__notes')) return;
-          card.classList.toggle('is-flipped');
-        });
+      function toggleOpen() {
+        var open = card.classList.toggle('is-open');
+        card.setAttribute('aria-expanded', open ? 'true' : 'false');
       }
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('.scard__notes')) return;
+        toggleOpen();
+      });
       card.addEventListener('keydown', function (e) {
         if (e.key !== 'Enter' && e.key !== ' ') return;
-        if (e.target.closest('.flipcard__notes')) return;
+        if (e.target.closest('.scard__notes')) return;
         e.preventDefault();
-        card.classList.toggle('is-flipped');
+        toggleOpen();
       });
-      card.querySelector('.flipcard__notes').addEventListener('click', function (e) {
+      card.querySelector('.scard__notes').addEventListener('click', function (e) {
         e.stopPropagation();
         openModal(i);
       });
@@ -692,7 +632,7 @@
     if (entered) return;
     entered = true;
     if (!gsap || reduced) return;
-    var items = cards.querySelectorAll('.flipcard');
+    var items = cards.querySelectorAll('.scard');
     gsap.fromTo(items, { y: 28, opacity: 0 }, {
       y: 0, opacity: 1, duration: 0.7, stagger: 0.06, ease: 'power3.out', delay: 0.05,
       clearProps: 'transform,opacity', overwrite: true
@@ -838,4 +778,401 @@
     if (done) return;
     if (e.key === 'Escape') closeGate();
   });
+})();
+
+/* ---------- process · connected map of 3D flip cards ---------- */
+(function () {
+  'use strict';
+
+  var gsap = window.gsap;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var flow = document.getElementById('flow');
+  var svg = document.getElementById('flowConnectors');
+  var list = document.getElementById('flowList');
+  if (!flow || !svg || !list) return;
+
+  var cards = [];
+  var entered = false;
+  var pilot = null;
+  var journey = null;
+  var totalLen = 0;
+  var cardDist = [];
+  var dots = [];
+  var scrollTick = false;
+
+  var steps = [
+    {
+      num: '01', title: 'Client Inquiry', phase: 'Start', img: 'images/01-inquiry.jpg',
+      front: 'Tell us what you want to build — your idea, requirement, or business need.',
+      detail: 'Every project starts with a hello. Share your idea, requirement, or business need — even a rough sketch is enough to begin.',
+      groups: [
+        { label: 'You', items: ['Share your idea or requirement', 'Tell us the goal behind it'] }
+      ],
+      outcome: 'Your idea is on our desk'
+    },
+    {
+      num: '02', title: 'Discovery & Consultation', phase: 'Plan', img: 'images/02-discovery.jpg',
+      front: 'We get to know your business, goals, and audience.',
+      detail: 'We connect on a call, in person, or however suits you — to understand your business, goals, audience, challenges, and what success looks like.',
+      groups: [
+        { label: 'We discuss', items: ['Business and goals', 'Audience and market', 'Challenges and requirements', 'Success metrics'] }
+      ],
+      outcome: 'A clear picture of the project'
+    },
+    {
+      num: '03', title: 'Proposal & Quotation', phase: 'Plan', img: 'images/03-proposal.jpg',
+      front: 'A tailored scope, timeline, and transparent pricing.',
+      detail: 'We analyse your requirements and prepare a custom proposal — project scope, features, estimated timeline, technology, and cost.',
+      groups: [
+        { label: 'The proposal covers', items: ['Project scope and features', 'Estimated timeline', 'Technology stack', 'Transparent pricing'] }
+      ],
+      outcome: 'Scope and pricing, agreed'
+    },
+    {
+      num: '04', title: 'Agreement & Documentation', phase: 'Plan', img: 'images/04-agreement.jpg',
+      front: 'The project is formalised on paper.',
+      detail: 'Once the proposal is approved, we formalise the project through the required agreements and documentation.',
+      groups: [
+        { label: 'Agreed and documented', items: ['Scope and deliverables', 'Roles and responsibilities', 'Payment terms and timeline', 'Project conditions'] }
+      ],
+      outcome: 'A clear, signed agreement'
+    },
+    {
+      num: '05', title: 'Visual Planning & Design Showcase', phase: 'Design', img: 'images/05-design.jpg',
+      front: 'We plan how the product looks and behaves before we build.',
+      detail: 'Before development begins, we visually plan the product look and behaviour — so we build it right the first time.',
+      groups: [
+        { label: 'Includes', items: ['UI/UX design', 'Wireframes and layouts', 'User flows', 'Prototypes and visual concepts'] },
+        { label: 'You', items: ['Review the showcase', 'Share feedback'] }
+      ],
+      outcome: 'An approved visual blueprint'
+    },
+    {
+      num: '06', title: 'Project Initiation & Advance Payment', phase: 'Design', img: 'images/06-payment.jpg',
+      front: 'The project officially enters production.',
+      detail: 'Once scope and visual direction are confirmed, the agreed advance payment is made and the project officially enters production.',
+      groups: [
+        { label: 'Payment', items: ['Typically 50% upfront', 'Or as agreed in the contract'] }
+      ],
+      outcome: 'Project officially initiated'
+    },
+    {
+      num: '07', title: 'Development', phase: 'Build', img: 'images/07-development.jpg',
+      front: 'We build the actual product.',
+      detail: 'We build the product based on the approved scope and design — clean, fast, and exactly to spec.',
+      groups: [
+        { label: 'In the build', items: ['Frontend and backend', 'Database', 'APIs and integrations', 'AI and automation'] }
+      ],
+      outcome: 'The product built to spec'
+    },
+    {
+      num: '08', title: 'Quality Assurance & Testing', phase: 'Build', img: 'images/08-qa.jpg',
+      front: 'Thorough testing before you ever see it.',
+      detail: 'We test the developed product thoroughly before presenting it for your final review.',
+      groups: [
+        { label: 'Checks', items: ['Functionality and user experience', 'Responsiveness and performance', 'Compatibility and integrations', 'Bug detection and fixes'] }
+      ],
+      outcome: 'A stable version for review'
+    },
+    {
+      num: '09', title: 'Client Review & Approval', phase: 'Launch', img: 'images/09-review.jpg',
+      front: 'You review the product against the agreed requirements.',
+      detail: 'You review the finished product against the agreed requirements and share your feedback with us.',
+      groups: [
+        { label: 'You', items: ['Review the build', 'Share feedback', 'Give final approval'] }
+      ],
+      outcome: 'Approved for launch'
+    },
+    {
+      num: '10', title: 'Deployment & Launch', phase: 'Launch', img: 'images/10-launch.jpg',
+      front: 'Your product goes live.',
+      detail: 'Once approved, we deploy the project to the agreed production environment and complete the launch configuration.',
+      groups: [
+        { label: 'We handle', items: ['Deployment and hosting setup', 'Domain and security', 'Launch configuration'] }
+      ],
+      outcome: 'Your site or app goes live'
+    },
+    {
+      num: '11', title: 'Project Handover', phase: 'Launch', img: 'images/11-handover.jpg',
+      front: 'The project — and its keys — are handed to you.',
+      detail: 'We officially hand over the completed project, along with all agreed assets and access.',
+      groups: [
+        { label: 'Handed over', items: ['The completed project', 'Admin and hosting access', 'Domain access', 'Documentation and assets'] }
+      ],
+      outcome: 'Delivered to the client'
+    },
+    {
+      num: '12', title: 'Project Closure', phase: 'Launch', img: 'images/12-closure.jpg',
+      front: 'Formal completion of the project.',
+      detail: 'After successful delivery and handover, the project is formally completed through the appropriate closure documentation.',
+      groups: [
+        { label: 'Closure', items: ['Completion documentation', 'Final sign-off'] }
+      ],
+      outcome: 'Project officially completed'
+    },
+    {
+      num: '13', title: 'Grow With Us', phase: 'Grow', img: 'images/13-growth.jpg',
+      front: 'The product keeps improving — on your terms, optionally.',
+      detail: 'Your relationship does not have to end at launch. We can keep supporting and improving your digital product through separate, ongoing services.',
+      groups: [
+        { label: 'Ongoing services', items: ['Maintenance and bug fixes', 'SEO and performance', 'Security and content updates', 'AI and automation enhancements', 'New features and support'] },
+        { label: 'Note', items: ['Charged separately, based on the service or requirement you select'] }
+      ],
+      outcome: 'A partner for the long run'
+    }
+  ];
+
+  var total = steps.length;
+  var can3D = !!gsap && !reduced;
+  if (can3D) flow.classList.add('js-flip');
+
+  function build() {
+    steps.forEach(function (s, i) {
+      var row = document.createElement('div');
+      row.className = 'frow';
+
+      var card = document.createElement('div');
+      card.className = 'fcard' +
+        (i % 2 === 1 ? ' fcard--right' : '') +
+        (i === total - 1 ? ' fcard--final' : '');
+      card.tabIndex = 0;
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-expanded', 'false');
+      card.setAttribute('aria-label', 'Step ' + s.num + ' — ' + s.title + '. Tap to flip the card open.');
+
+      var front =
+        (s.img ? '<div class="fcard__img" role="presentation" style="background-image:url(' + s.img + ');"></div>' : '') +
+        '<span class="fcard__num">' + s.num + '</span>' +
+        '<span class="fcard__phase">' + s.phase + '</span>' +
+        '<div class="fcard__body">' +
+          '<h3 class="fcard__title">' + s.title + '</h3>' +
+          '<p class="fcard__sub">' + s.front + '</p>' +
+        '</div>' +
+        '<span class="fcard__hint">tap to flip</span>';
+
+      var back =
+        '<span class="fcard__phase">' + s.num + ' · ' + s.phase + '</span>' +
+        '<h3 class="fcard__back-title">' + s.title + '</h3>' +
+        '<p class="fcard__detail">' + s.detail + '</p>' +
+        s.groups.map(function (g) {
+          return '<div class="fgroup">' +
+            '<p class="fgroup__label">' + g.label + '</p>' +
+            '<ul class="fgroup__list">' +
+              g.items.map(function (it) { return '<li>' + it + '</li>'; }).join('') +
+            '</ul>' +
+          '</div>';
+        }).join('') +
+        '<span class="fcard__outcome">' + s.outcome + '</span>';
+
+      var frontCls = 'fcard__front' + (s.img ? ' fcard__front--img' : '');
+      card.innerHTML = '<div class="' + frontCls + '">' + front + '</div><div class="fcard__back">' + back + '</div>';
+      row.appendChild(card);
+      list.appendChild(row);
+    });
+  }
+
+  function flipCard(card, force, fast) {
+    var open = (typeof force === 'boolean') ? force : !card._open;
+    card._open = open;
+    card.classList.toggle('is-flipped', open);
+    card.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (!can3D) return;
+    if (card._tl) { card._tl.kill(); card._tl = null; }
+    card.classList.add('is-flipping');
+    var tl = gsap.timeline({
+      onComplete: function () { card.classList.remove('is-flipping'); },
+      defaults: { transformPerspective: 1600 }
+    });
+    card._tl = tl;
+    tl.to(card, { rotationY: 90, duration: fast ? 0.32 : 0.46, ease: 'power2.in', y: -18, scale: 0.94 })
+      .to(card, { rotationY: open ? 180 : 0, duration: fast ? 0.4 : 0.64, ease: 'power3.out', y: 0, scale: 1 });
+  }
+
+  function animateIn() {
+    if (entered) return;
+    entered = true;
+    if (!can3D) return;
+    gsap.fromTo(cards, { y: 30, opacity: 0 }, {
+      y: 0, opacity: 1, duration: 0.7, stagger: 0.07, ease: 'power3.out',
+      clearProps: 'transform,opacity', overwrite: true
+    });
+  }
+
+  function drawConnectors() {
+    var w = flow.clientWidth;
+    var h = flow.clientHeight;
+    var rect = flow.getBoundingClientRect();
+    var cardNodes = list.querySelectorAll('.fcard');
+    if (!cardNodes.length) return;
+
+    var spine = w < 560 ? 16 : w / 2;
+    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+    var ns = 'http://www.w3.org/2000/svg';
+    function el(name, attrs, cls) {
+      var n = document.createElementNS(ns, name);
+      if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+      if (cls) n.setAttribute('class', cls);
+      return n;
+    }
+
+    var first = cardNodes[0].getBoundingClientRect();
+    var last = cardNodes[cardNodes.length - 1].getBoundingClientRect();
+    var topY = first.top - rect.top - 24;
+    var bottomY = last.bottom - rect.top + 24;
+
+    svg.appendChild(el('path', {
+      d: 'M ' + spine + ' ' + topY + ' L ' + spine + ' ' + bottomY
+    }, 'flow__spine'));
+
+    svg.appendChild(el('circle', { cx: spine, cy: topY, r: 4 }, 'flow__node'));
+    svg.appendChild(el('circle', { cx: spine, cy: bottomY, r: 4 }, 'flow__node--end'));
+
+    var junctions = [];
+    dots = [];
+    cardNodes.forEach(function (card) {
+      var r = card.getBoundingClientRect();
+      var cy = r.top - rect.top + r.height / 2;
+      var inner = (r.right - rect.left) < spine ? (r.right - rect.left) : (r.left - rect.left);
+      junctions.push({ cy: cy, inner: inner });
+      svg.appendChild(el('path', {
+        d: 'M ' + inner + ' ' + cy + ' L ' + spine + ' ' + cy
+      }, 'flow__link'));
+      var dot = el('circle', { cx: spine, cy: cy, r: 4 }, 'flow__dot');
+      svg.appendChild(dot);
+      dots.push(dot);
+    });
+
+    journey = [{ x: spine, y: topY, visit: -1, dist: 0 }];
+    junctions.forEach(function (j, i) {
+      journey.push({ x: spine, y: j.cy, visit: i, dist: 0 });
+    });
+    journey.push({ x: spine, y: bottomY, visit: -1, dist: 0 });
+
+    cardDist = [];
+    var d = 0;
+    for (var k = 1; k < journey.length; k++) {
+      var a = journey[k - 1];
+      var b = journey[k];
+      d += Math.hypot(b.x - a.x, b.y - a.y);
+      b.dist = d;
+      if (b.visit >= 0) cardDist[b.visit] = d;
+    }
+    totalLen = d;
+  }
+
+  function ensurePilot() {
+    if (pilot) return pilot;
+    pilot = document.createElement('div');
+    pilot.className = 'flow__pilot';
+    pilot.setAttribute('aria-hidden', 'true');
+    var img = document.createElement('img');
+    img.className = 'flow__pilot-avatar';
+    img.src = 'images/client-avatar.jpg';
+    img.alt = '';
+    pilot.appendChild(img);
+    svg.parentNode.insertBefore(pilot, svg.nextSibling);
+    return pilot;
+  }
+
+  function pointAtDistance(d) {
+    if (!journey || !journey.length) return null;
+    if (d <= 0) return { x: journey[0].x, y: journey[0].y };
+    var last = journey[journey.length - 1];
+    if (d >= totalLen) return { x: last.x, y: last.y };
+    var a = journey[0];
+    for (var i = 1; i < journey.length; i++) {
+      var b = journey[i];
+      if (d <= b.dist) {
+        var seg = b.dist - a.dist;
+        var t = seg > 0 ? (d - a.dist) / seg : 0;
+        return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t };
+      }
+      a = b;
+    }
+    return null;
+  }
+
+  function updatePilot() {
+    if (!can3D || !journey) return;
+    var rect = flow.getBoundingClientRect();
+    if (!rect.height) return;
+    var p = (window.innerHeight * 0.68 - rect.top) / rect.height;
+    if (p < 0) p = 0;
+    else if (p > 1) p = 1;
+    var d = p * totalLen;
+    var pt = pointAtDistance(d);
+    if (!pt) return;
+    ensurePilot();
+    gsap.set(pilot, { x: pt.x, y: pt.y });
+    cards.forEach(function (card, i) {
+      var open = cardDist[i] !== undefined && d >= cardDist[i];
+      if (!card._manual && open !== card._open) flipCard(card, open, true);
+      if (dots[i]) dots[i].classList.toggle('is-active', open);
+    });
+  }
+
+  function onScroll() {
+    if (!can3D || scrollTick) return;
+    scrollTick = true;
+    window.requestAnimationFrame(function () {
+      scrollTick = false;
+      updatePilot();
+    });
+  }
+
+  function redraw() {
+    drawConnectors();
+    updatePilot();
+  }
+
+  function enterFlow() {
+    animateIn();
+    updatePilot();
+  }
+
+  build();
+  cards = Array.prototype.slice.call(list.querySelectorAll('.fcard'));
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) enterFlow();
+      });
+    }, { threshold: 0.12 });
+    io.observe(flow);
+  } else {
+    enterFlow();
+  }
+
+  function onCardInteract(card) {
+    card._manual = true;
+    flipCard(card);
+  }
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () { onCardInteract(card); });
+    card.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+      onCardInteract(card);
+    });
+  });
+
+  redraw();
+  window.addEventListener('load', redraw);
+  window.requestAnimationFrame(redraw);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(redraw);
+
+  var drawPending = null;
+  window.addEventListener('resize', function () {
+    if (drawPending) return;
+    drawPending = true;
+    window.requestAnimationFrame(function () {
+      drawPending = false;
+      redraw();
+    });
+  }, { passive: true });
+  window.addEventListener('scroll', onScroll, { passive: true });
 })();
