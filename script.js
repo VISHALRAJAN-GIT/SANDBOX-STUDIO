@@ -1175,4 +1175,17 @@
     });
   }, { passive: true });
   window.addEventListener('scroll', onScroll, { passive: true });
+
+  if ('ResizeObserver' in window) {
+    var ro = new ResizeObserver(function () {
+      if (drawPending) return;
+      drawPending = true;
+      window.requestAnimationFrame(function () {
+        drawPending = false;
+        redraw();
+      });
+    });
+    ro.observe(flow);
+  }
+  window.setTimeout(redraw, 600);
 })();
