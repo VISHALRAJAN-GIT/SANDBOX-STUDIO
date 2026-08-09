@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Notes from the Sandbox Web Studio — practical writing on web performance, SEO, AI chatbots, automation, e-commerce, and keeping software healthy." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="blog.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Blog — Sandbox Web Studio" />
+  <meta property="og:description" content="Notes from the Sandbox Web Studio — practical writing on web performance, SEO, AI chatbots, automation, e-commerce, and keeping software healthy." />
+  <meta property="og:url" content="blog.html" />
+  <meta property="og:site_name" content="Sandbox Web Studio" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Blog — Sandbox Web Studio" />
+  <meta name="twitter:description" content="Notes from the Sandbox Web Studio — practical writing on web performance, SEO, AI chatbots, automation, e-commerce, and keeping software healthy." />
+
+  <title>Blog — Sandbox Web Studio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Sandbox Web Studio Blog",
+    "url": "blog.html",
+    "description": "Notes from the Sandbox Web Studio — practical writing on web performance, SEO, AI chatbots, automation, e-commerce, and keeping software healthy.",
+    "blogPost": [
+      {
+        "@type": "BlogPosting",
+        "headline": "How fast is fast enough? Core Web Vitals, decoded",
+        "url": "blog.html#post-web-vitals",
+        "datePublished": "2026-08-05",
+        "dateModified": "2026-08-05",
+        "articleSection": "Web Performance",
+        "author": { "@type": "Organization", "name": "Sandbox Web Studio" }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "SEO in 2026: what actually moves rankings",
+        "url": "blog.html#post-seo",
+        "datePublished": "2026-07-28",
+        "dateModified": "2026-07-28",
+        "articleSection": "SEO",
+        "author": { "@type": "Organization", "name": "Sandbox Web Studio" }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Chatbots that don't sound like chatbots",
+        "url": "blog.html#post-chatbots",
+        "datePublished": "2026-07-14",
+        "dateModified": "2026-07-14",
+        "articleSection": "AI Chatbots",
+        "author": { "@type": "Organization", "name": "Sandbox Web Studio" }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "From lead to invoice: automating the back office",
+        "url": "blog.html#post-automation",
+        "datePublished": "2026-06-30",
+        "dateModified": "2026-06-30",
+        "articleSection": "AI Automation",
+        "author": { "@type": "Organization", "name": "Sandbox Web Studio" }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "The 60-second checkout decisions that lose sales",
+        "url": "blog.html#post-checkout",
+        "datePublished": "2026-06-12",
+        "dateModified": "2026-06-12",
+        "articleSection": "E-commerce",
+        "author": { "@type": "Organization", "name": "Sandbox Web Studio" }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Software doesn't rust — it just needs a care plan",
+        "url": "blog.html#post-maintenance",
+        "datePublished": "2026-05-27",
+        "dateModified": "2026-05-27",
+        "articleSection": "Support & Maintenance",
+        "author": { "@type": "Organization", "name": "Sandbox Web Studio" }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="blog-page">
+  <a class="skip-link" href="#posts">Skip to posts</a>
+
+  <!-- ============ NAV · floating pill (mirrors index) ============ -->
+  <nav class="nav" id="nav" aria-label="Primary">
+    <div class="nav__pill">
+      <a class="nav__brand" href="index.html" aria-label="Sandbox Web Studio — home">
+        <span class="nav__dot" aria-hidden="true"></span>sandbox<span class="nav__brand-end">.</span>
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="index.html#comparison">Compare</a></li>
+        <li><a href="index.html#workflow">Process</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="blog.html" class="is-active" aria-current="page">Blog</a></li>
+      </ul>
+      <a class="nav__cta" href="index.html#contact">Start a project</a>
+      <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Blog · header -->
+    <section class="blog-hero" aria-labelledby="blogTitle">
+      <p class="section__label">Journal · Sandbox Studio</p>
+      <h1 class="blog-hero__title" id="blogTitle">Notes from the studio.</h1>
+      <p class="blog-hero__sub">Practical writing on what we build and how it behaves in the wild — performance, search, AI, and the unglamorous work of keeping it all running.</p>
+    </section>
+
+    <!-- Blog · posts -->
+    <section class="blog-grid" id="posts" aria-label="Blog posts">
+      <article class="bcard bcard--featured" id="post-web-vitals">
+        <div class="bcard__meta">
+          <span class="bcard__cat">Web Performance</span>
+          <time class="bcard__date" datetime="2026-08-05">Aug 5, 2026</time>
+        </div>
+        <h2 class="bcard__title">How fast is fast enough? Core Web Vitals, decoded</h2>
+        <p class="bcard__excerpt">Google measures three things: how quickly the main content appears, how immediately the page reacts to your first tap, and how stable the layout stays while it loads. We break down LCP, INP, and CLS into numbers you can actually improve this week — and why a 200&nbsp;ms gain is often worth more than a new feature.</p>
+        <span class="bcard__read">6 min read</span>
+        <a class="bcard__more" href="#post-web-vitals" aria-label="Read the note on Core Web Vitals">Read the note <span aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="bcard" id="post-seo">
+        <div class="bcard__meta">
+          <span class="bcard__cat">SEO</span>
+          <time class="bcard__date" datetime="2026-07-28">Jul 28, 2026</time>
+        </div>
+        <h2 class="bcard__title">SEO in 2026: what actually moves rankings</h2>
+        <p class="bcard__excerpt">Keywords still matter, but not the way they used to. The ranking game is now about intent, authority, and a site that loads fast and answers the question directly. Here is the checklist we run on every client build — from technical fixes to content that earns links.</p>
+        <span class="bcard__read">5 min read</span>
+        <a class="bcard__more" href="#post-seo" aria-label="Read the note on SEO">Read the note <span aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="bcard" id="post-chatbots">
+        <div class="bcard__meta">
+          <span class="bcard__cat">AI Chatbots</span>
+          <time class="bcard__date" datetime="2026-07-14">Jul 14, 2026</time>
+        </div>
+        <h2 class="bcard__title">Chatbots that don't sound like chatbots</h2>
+        <p class="bcard__excerpt">The difference between a bot people tolerate and one they thank is grounding — answering from your real docs, not a generic script. We show how a brand-trained assistant resolves most tickets instantly and knows exactly when to hand off to a human.</p>
+        <span class="bcard__read">4 min read</span>
+        <a class="bcard__more" href="#post-chatbots" aria-label="Read the note on chatbots">Read the note <span aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="bcard" id="post-automation">
+        <div class="bcard__meta">
+          <span class="bcard__cat">AI Automation</span>
+          <time class="bcard__date" datetime="2026-06-30">Jun 30, 2026</time>
+        </div>
+        <h2 class="bcard__title">From lead to invoice: automating the back office</h2>
+        <p class="bcard__excerpt">Inquiry lands in the inbox, gets triaged, scheduled, and turned into a follow-up — all before your team has had coffee. We walk through the workflow layers, where the AI decides, and the human checkpoints that keep it safe.</p>
+        <span class="bcard__read">7 min read</span>
+        <a class="bcard__more" href="#post-automation" aria-label="Read the note on automation">Read the note <span aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="bcard" id="post-checkout">
+        <div class="bcard__meta">
+          <span class="bcard__cat">E-commerce</span>
+          <time class="bcard__date" datetime="2026-06-12">Jun 12, 2026</time>
+        </div>
+        <h2 class="bcard__title">The 60-second checkout decisions that lose sales</h2>
+        <p class="bcard__excerpt">Most carts are abandoned in the last sixty seconds — over fields, speed, and surprise costs. We share the checkout patterns that quietly recover revenue, from a one-page flow to abandoned-cart recovery that actually gets opened.</p>
+        <span class="bcard__read">5 min read</span>
+        <a class="bcard__more" href="#post-checkout" aria-label="Read the note on checkout design">Read the note <span aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="bcard" id="post-maintenance">
+        <div class="bcard__meta">
+          <span class="bcard__cat">Support &amp; Maintenance</span>
+          <time class="bcard__date" datetime="2026-05-27">May 27, 2026</time>
+        </div>
+        <h2 class="bcard__title">Software doesn't rust — it just needs a care plan</h2>
+        <p class="bcard__excerpt">Outdated dependencies, silent downtime, creeping performance loss: the internet is littered with products that rotted after launch. A care plan is the difference between owning a liability and owning an asset.</p>
+        <span class="bcard__read">4 min read</span>
+        <a class="bcard__more" href="#post-maintenance" aria-label="Read the note on maintenance">Read the note <span aria-hidden="true">→</span></a>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      'use strict';
+      var toggle = document.getElementById('navToggle');
+      var links = document.getElementById('navLinks');
+      if (!toggle || !links) return;
+      toggle.addEventListener('click', function () {
+        var open = links.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      links.addEventListener('click', function (e) {
+        if (e.target.closest('a')) {
+          links.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

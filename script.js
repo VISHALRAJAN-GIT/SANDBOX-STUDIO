@@ -1,9 +1,100 @@
 /* Sandbox Web Studio — interactions */
 
+/* ---------- home · video-frame background · auto-playing like a video ---------- */
 (function () {
   'use strict';
 
-  /* ---------- mobile nav toggle ---------- */
+  var stage = document.getElementById('bgFrames');
+  if (!stage) return;
+
+  var layerA = stage.querySelector('.bg__layer--a');
+  var layerB = stage.querySelector('.bg__layer--b');
+  if (!layerA || !layerB) return;
+
+  var total = 35;
+  function path(i) { return 'frames/frame-' + (i < 10 ? '0' : '') + i + '.jpg'; }
+
+  var paths = [];
+  for (var i = 1; i <= total; i++) paths.push(path(i));
+
+  var loaded = 0;
+  var ready = false;
+  var next = 0;
+  var back = layerA;
+  var front = layerB;
+  var raf = null;
+  var timer = null;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var FRAME_MS = 160;
+  var CROSSFADE_MS = Math.max(30, Math.min(220, FRAME_MS * 0.45));
+
+  function setOpacity(el, v) { el.style.opacity = String(v); }
+
+  function start() {
+    if (ready) return;
+    ready = true;
+    back.style.backgroundImage = 'url("' + paths[0] + '")';
+    back.style.zIndex = '1';
+    front.style.zIndex = '2';
+    setOpacity(back, 1);
+    setOpacity(front, 0);
+    next = 1;
+    if (!reduced) schedule();
+  }
+
+  function advance() {
+    if (!ready) return;
+    var i = next;
+    next = (next + 1) % total;
+    if (raf) cancelAnimationFrame(raf);
+    var from = parseFloat(front.style.opacity) || 0;
+    front.style.backgroundImage = 'url("' + paths[i] + '")';
+    var t0 = null;
+
+    function tickFn(now) {
+      if (t0 === null) t0 = now;
+      var t = (now - t0) / CROSSFADE_MS;
+      if (t > 1) t = 1;
+      var eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      setOpacity(front, from + (1 - from) * eased);
+      if (t < 1) {
+        raf = requestAnimationFrame(tickFn);
+      } else {
+        raf = null;
+        setOpacity(front, 1);
+        var tmp = back; back = front; front = tmp;
+        setOpacity(front, 0);
+        front.style.zIndex = '2';
+        back.style.zIndex = '1';
+      }
+    }
+    raf = requestAnimationFrame(tickFn);
+  }
+
+  function schedule() {
+    timer = window.setTimeout(function () {
+      advance();
+      schedule();
+    }, FRAME_MS);
+  }
+
+  function onFrameReady() {
+    loaded++;
+    if (loaded >= total) start();
+  }
+
+  paths.forEach(function (p) {
+    var img = new Image();
+    img.onload = onFrameReady;
+    img.onerror = onFrameReady;
+    img.src = p;
+  });
+})();
+
+/* ---------- mobile nav toggle ---------- */
+(function () {
+  'use strict';
+
   var navToggle = document.getElementById('navToggle');
   var navLinks = document.getElementById('navLinks');
   if (navToggle && navLinks) {
@@ -769,7 +860,14 @@
   var timer = window.setTimeout(closeGate, 2000);
 
   if (video) {
+    var rate = 10;
+    video.defaultPlaybackRate = rate;
+    video.playbackRate = rate;
     video.play().catch(function () {});
+    video.addEventListener('loadeddata', function () {
+      video.defaultPlaybackRate = rate;
+      video.playbackRate = rate;
+    });
     video.addEventListener('ended', closeGate);
     video.addEventListener('error', function () { window.setTimeout(closeGate, 200); });
   }

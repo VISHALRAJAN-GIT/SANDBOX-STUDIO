@@ -29,6 +29,7 @@
         <li><a href="#comparison">Compare</a></li>
         <li><a href="#workflow">Process</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
       </ul>
       <a class="nav__cta" href="#contact">Start a project</a>
       <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">
@@ -45,9 +46,10 @@
     <!-- Home · video background lives only here -->
     <section class="home" id="home" aria-label="Home">
       <div class="page__bg" aria-hidden="true">
-        <video class="page__video" autoplay muted loop playsinline preload="auto" tabindex="-1">
-          <source src="ok_leave_it_i_need_a_new_vedio_processed.mp4" type="video/mp4" />
-        </video>
+        <div class="bg__frames" id="bgFrames">
+          <div class="bg__layer bg__layer--a"></div>
+          <div class="bg__layer bg__layer--b"></div>
+        </div>
         <div class="page__scrim"></div>
       </div>
     </section>
