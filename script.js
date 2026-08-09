@@ -118,8 +118,9 @@
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
       var id = a.getAttribute('href');
-      if (id.length < 2) return;
-      var target = document.querySelector(id);
+      if (!id || id.length < 2) return;
+      var target = null;
+      try { target = document.querySelector(id); } catch (e) { return; }
       if (!target) { e.preventDefault(); return; }
       e.preventDefault();
       history.replaceState(null, '', id);
@@ -138,8 +139,9 @@
   var sections = [];
   links.forEach(function (a) {
     var id = a.getAttribute('href');
-    if (!id || id.length < 2) return;
-    var el = document.querySelector(id);
+    if (!id || id.charAt(0) !== '#' || id.length < 2) return;
+    var el = null;
+    try { el = document.querySelector(id); } catch (e) { return; }
     if (el) sections.push({ link: a, el: el });
   });
   if (!sections.length) return;
