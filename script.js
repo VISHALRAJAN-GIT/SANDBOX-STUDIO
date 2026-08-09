@@ -825,59 +825,6 @@
   if (!entered && cards.getBoundingClientRect().top < window.innerHeight) animateIn();
 })();
 
-/* ---------- login gate · entrance overlay (first 2s of the intro video) ---------- */
-(function () {
-  'use strict';
-
-  var gate = document.getElementById('gate');
-  if (!gate) return;
-
-  var video = gate.querySelector('.gate__video');
-  var skip = gate.querySelector('.gate__skip');
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var done = false;
-
-  function closeGate() {
-    if (done) return;
-    done = true;
-    if (video) video.pause();
-    gate.classList.add('is-closing');
-    window.setTimeout(function () {
-      gate.classList.add('is-hidden');
-      gate.setAttribute('aria-hidden', 'true');
-    }, 650);
-  }
-
-  if (skip) skip.addEventListener('click', closeGate);
-
-  if (reduced) {
-    gate.classList.add('is-hidden');
-    gate.setAttribute('aria-hidden', 'true');
-    return;
-  }
-
-  document.body.style.overflow = 'hidden';
-  var timer = window.setTimeout(closeGate, 2000);
-
-  if (video) {
-    var rate = 10;
-    video.defaultPlaybackRate = rate;
-    video.playbackRate = rate;
-    video.play().catch(function () {});
-    video.addEventListener('loadeddata', function () {
-      video.defaultPlaybackRate = rate;
-      video.playbackRate = rate;
-    });
-    video.addEventListener('ended', closeGate);
-    video.addEventListener('error', function () { window.setTimeout(closeGate, 200); });
-  }
-
-  window.addEventListener('keydown', function (e) {
-    if (done) return;
-    if (e.key === 'Escape') closeGate();
-  });
-})();
-
 /* ---------- process · connected map of 3D flip cards ---------- */
 (function () {
   'use strict';
