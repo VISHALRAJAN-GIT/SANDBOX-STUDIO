@@ -496,7 +496,6 @@
   var gsap = window.gsap;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var imgBase = 'https://images.unsplash.com/photo-';
   var services = [
     {
       num: '01', motif: 'web', name: 'Web Applications',
@@ -506,7 +505,13 @@
       solution: 'We ship responsive, accessible builds with clean architecture, fast loads, and a conversion path designed into every page.',
       features: ['Core Web Vitals tuned', 'Responsive & accessible', 'Headless-ready stacks', 'Conversion-focused build', 'Ongoing performance budget'],
       tech: ['HTML/CSS/JS', 'React', 'Vercel', 'Headless CMS'],
-      img: '1760670399462-f5e479452c27',
+      url: 'sandbox.studio/apps',
+      photo: 'assets/img/screens/image.png',
+      shot: '<div class="shot__site">' +
+        '<div class="shot__nav"><i class="shot__logo"></i><i class="shot__navlink" style="width:30px"></i><i class="shot__navlink" style="width:24px"></i><i class="shot__navlink" style="width:26px"></i></div>' +
+        '<div class="shot__hero shot__hero--sm"><i class="shot__line shot__line--dark"></i><i class="shot__line shot__line--short"></i></div>' +
+        '<div class="shot__grid"><i class="shot__gcard"></i><i class="shot__gcard"></i><i class="shot__gcard"></i></div>' +
+      '</div>',
       cta: 'Build my website'
     },
     {
@@ -517,7 +522,19 @@
       solution: 'We audit, fix, and build — technical SEO, keyword-led content, and authority signals that compound month after month.',
       features: ['Technical SEO audits', 'Keyword & intent research', 'On-page optimization', 'Local SEO & Google Business', 'Monthly ranking reports'],
       tech: ['Search Console', 'Screaming Frog', 'Ahrefs', 'Schema.org'],
-      img: '1460925895917-afdab827c52f',
+      url: 'sandbox.studio/seo',
+      photo: 'assets/img/screens/seo.png',
+      shot: '<div class="shot__site">' +
+        '<div class="shot__search"><i class="shot__searchicon"></i><i class="shot__searchline"></i></div>' +
+        '<div class="shot__results">' +
+          '<i class="shot__rline shot__rline--url"></i><i class="shot__rline shot__rline--title"></i><i class="shot__rline"></i><i class="shot__rline shot__rline--short"></i>' +
+          '<i class="shot__rline shot__rline--url"></i><i class="shot__rline shot__rline--title"></i><i class="shot__rline"></i><i class="shot__rline shot__rline--short"></i>' +
+          '<i class="shot__rline shot__rline--url"></i><i class="shot__rline shot__rline--title"></i><i class="shot__rline"></i><i class="shot__rline shot__rline--short"></i>' +
+        '</div>' +
+        '<div class="shot__chart">' +
+          '<i class="shot__cbar" style="height:22%"></i><i class="shot__cbar" style="height:36%"></i><i class="shot__cbar" style="height:28%"></i><i class="shot__cbar" style="height:52%"></i><i class="shot__cbar" style="height:70%"></i><i class="shot__cbar" style="height:58%"></i><i class="shot__cbar" style="height:84%"></i><i class="shot__cbar" style="height:96%"></i>' +
+        '</div>' +
+      '</div>',
       cta: 'Rank my business'
     },
     {
@@ -528,7 +545,18 @@
       solution: 'We build chatbots grounded in your docs, history, and pricing — resolving most tickets instantly and escalating gracefully.',
       features: ['Brand-trained responses', '24/7 availability', 'Seamless human handoff', 'Conversation analytics', 'Retraining on your latest docs'],
       tech: ['RAG', 'Live chat', 'WhatsApp', 'Web'],
-      img: '1573164713988-8665fc963095',
+      url: 'sandbox.studio/chat',
+      photo: 'assets/img/screens/image copy.png',
+      shot: '<div class="shot__site">' +
+        '<div class="shot__nav"><i class="shot__logo"></i><i class="shot__navlink" style="width:26px"></i><i class="shot__navlink" style="width:20px"></i></div>' +
+        '<div class="shot__hero"><i class="shot__line shot__line--dark"></i><i class="shot__line shot__line--short"></i><i class="shot__line" style="width:70%"></i><i class="shot__line" style="width:52%"></i></div>' +
+        '<div class="shot__chat">' +
+          '<i class="shot__cbubble" style="width:54px"></i>' +
+          '<i class="shot__cbubble shot__cbubble--user" style="width:40px"></i>' +
+          '<i class="shot__cbubble" style="width:62px"></i>' +
+        '</div>' +
+        '<i class="shot__fab"></i>' +
+      '</div>',
       cta: 'Deploy a chatbot'
     },
     {
@@ -539,7 +567,15 @@
       solution: 'We connect your tools into self-running workflows where an AI layer makes decisions and hands off only what needs a human.',
       features: ['Multi-step agent workflows', 'CRM / inbox / calendar glue', 'Scheduled intelligence runs', 'Human-in-the-loop checkpoints', 'Cost & usage dashboards'],
       tech: ['AI Agents', 'n8n', 'Zapier', 'APIs'],
-      img: '1716436329836-208bea5a55e6',
+      url: 'sandbox.studio/automation',
+      photo: 'assets/img/screens/image copy 2.png',
+      shot: '<div class="shot__site">' +
+        '<div class="shot__nav"><i class="shot__logo"></i></div>' +
+        '<div class="shot__flow">' +
+          '<i class="shot__fnode"></i><i class="shot__fline"></i><i class="shot__fnode is-lit"></i><i class="shot__fline"></i><i class="shot__fnode"></i>' +
+        '</div>' +
+        '<div class="shot__hero"><i class="shot__line shot__line--dark"></i><i class="shot__line shot__line--short"></i></div>' +
+      '</div>',
       cta: 'Automate my workflow'
     },
     {
@@ -550,7 +586,16 @@
       solution: 'We build fast, brand-true storefronts with streamlined checkout, smart search, and recovery flows that bring shoppers back.',
       features: ['Custom storefronts', 'Headless Shopify / WooCommerce', 'Payments, tax & shipping setup', 'Abandoned-cart recovery', 'Conversion tracking & A/B ready'],
       tech: ['Shopify', 'WooCommerce', 'Stripe', 'Next.js'],
-      img: '1556742049-0cfed4f6a45d',
+      url: 'sandbox.studio/shop',
+      photo: 'assets/img/screens/image copy 3.png',
+      shot: '<div class="shot__site">' +
+        '<div class="shot__nav"><i class="shot__logo"></i><i class="shot__navlink" style="width:24px"></i><i class="shot__navlink" style="width:18px"></i></div>' +
+        '<div class="shot__products">' +
+          '<i class="shot__pcard"><i class="shot__pimg"></i><i class="shot__pline"></i><i class="shot__ptag"></i></i>' +
+          '<i class="shot__pcard"><i class="shot__pimg"></i><i class="shot__pline"></i><i class="shot__ptag"></i></i>' +
+          '<i class="shot__pcard"><i class="shot__pimg"></i><i class="shot__pline"></i><i class="shot__ptag"></i></i>' +
+        '</div>' +
+      '</div>',
       cta: 'Launch my store'
     },
     {
@@ -561,7 +606,17 @@
       solution: 'We run proactive care plans — monitoring, updates, backups, and a human on call when it matters most.',
       features: ['Uptime monitoring & alerts', 'Security patches & backups', 'Performance reviews', 'Priority response', 'Monthly improvement sprint'],
       tech: ['Sentry', 'GitHub Actions', 'Uptime Robot', 'Cloud'],
-      img: '1558494949-ef010cbdcc31',
+      url: 'sandbox.studio/care',
+      photo: 'assets/img/screens/image copy 4.png',
+      shot: '<div class="shot__site">' +
+        '<div class="shot__nav"><i class="shot__logo"></i></div>' +
+        '<div class="shot__dash">' +
+          '<div class="shot__dashrow"><i class="shot__dlabel"></i><span class="shot__dbar"><i class="shot__dfill" style="width:96%"></i></span></div>' +
+          '<div class="shot__dashrow"><i class="shot__dlabel"></i><span class="shot__dbar"><i class="shot__dfill" style="width:84%"></i></span></div>' +
+          '<div class="shot__dashrow"><i class="shot__dlabel"></i><span class="shot__dbar"><i class="shot__dfill" style="width:99%"></i></span></div>' +
+        '</div>' +
+        '<div class="shot__hero shot__hero--sm"><i class="shot__line shot__line--dark"></i><i class="shot__line shot__line--short"></i></div>' +
+      '</div>',
       cta: 'Start a care plan'
     }
   ];
@@ -624,8 +679,14 @@
     return '<div class="motif motif--' + key + '">' + inner + '</div>';
   }
 
-  function imgHTML(item) {
-    return '<img class="scard__img" src="' + imgBase + item.img + '?auto=format&fit=crop&w=900&q=70" srcset="' + imgBase + item.img + '?auto=format&fit=crop&w=600&q=70 600w, ' + imgBase + item.img + '?auto=format&fit=crop&w=900&q=70 900w" sizes="(max-width: 40rem) 92vw, (max-width: 60rem) 46vw, 30vw" alt="" loading="lazy" decoding="async" draggable="false" />';
+  function shotHTML(item) {
+    var body = item.photo
+      ? '<img class="shot__photo" src="' + item.photo + '" alt="" loading="lazy" decoding="async" draggable="false" />'
+      : item.shot;
+    return '<div class="scard__shot" aria-hidden="true">' +
+      '<div class="shot__bar"><i class="shot__dot"></i><i class="shot__dot"></i><i class="shot__dot"></i><span class="shot__url">' + item.url + '</span></div>' +
+      '<div class="shot__body">' + body + '</div>' +
+    '</div>';
   }
 
   function build() {
@@ -637,7 +698,7 @@
       card.setAttribute('aria-expanded', 'false');
       card.setAttribute('aria-label', item.name + ' — ' + item.tag + '. Open the card or read the lab notes.');
 
-      var front = imgHTML(item);
+      var front = shotHTML(item);
       front +=
         '<span class="scard__num">' + item.num + '</span>' +
         '<span class="scard__hint" aria-hidden="true">open</span>' +
@@ -780,412 +841,484 @@
   if (!entered && cards.getBoundingClientRect().top < window.innerHeight) animateIn();
 })();
 
-/* ---------- process · connected map of 3D flip cards ---------- */
+
+
+/* ---------- process · horizontal deck — one step at a time, no page trapping ---------- */
 (function () {
   'use strict';
 
-  var gsap = window.gsap;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isMobile = window.matchMedia('(max-width: 60rem)');
 
-  var flow = document.getElementById('flow');
-  var svg = document.getElementById('flowConnectors');
-  var list = document.getElementById('flowList');
-  if (!flow || !svg || !list) return;
+  var journey = document.getElementById('journey');
+  var rail = document.getElementById('journeyRail');
+  var labelsEl = document.getElementById('journeyLabels');
+  var nodesEl = document.getElementById('journeyNodes');
+  var lineSvg = document.getElementById('journeyLine');
+  var pilot = document.getElementById('journeyPilot');
+  var deck = document.getElementById('journeyDeck');
+  var cards = document.getElementById('journeyCards');
+  var statusEl = document.getElementById('journeyStatus');
 
-  var cards = [];
-  var entered = false;
-  var pilot = null;
-  var journey = null;
-  var totalLen = 0;
-  var cardDist = [];
-  var dots = [];
-  var scrollTick = false;
+  var mCards = document.getElementById('journeyMCards');
+  var mIndex = document.getElementById('journeyMIndex');
+  var mPhase = document.getElementById('journeyMPhase');
+  var mFill = document.getElementById('journeyMFill');
+
+  if (!journey || !rail || !nodesEl || !deck || !cards) return;
+
+  var phases = [
+    { name: 'Start',  from: 0,  to: 0  },
+    { name: 'Plan',   from: 1,  to: 3  },
+    { name: 'Design', from: 4,  to: 5  },
+    { name: 'Build',  from: 6,  to: 7  },
+    { name: 'Launch', from: 8,  to: 11 },
+    { name: 'Grow',   from: 12, to: 12 }
+  ];
 
   var steps = [
     {
-      num: '01', title: 'Client Inquiry', phase: 'Start', img: 'images/01-inquiry.jpg',
-      front: 'Tell us what you want to build — your idea, requirement, or business need.',
+      num: '01', title: 'Client Inquiry', phase: 0, driver: 'client', img: 'images/01-inquiry.jpg',
+      blurb: 'Tell us what you want to build — your idea, requirement, or business need.',
       detail: 'Every project starts with a hello. Share your idea, requirement, or business need — even a rough sketch is enough to begin.',
-      groups: [
-        { label: 'You', items: ['Share your idea or requirement', 'Tell us the goal behind it'] }
-      ],
+      client: ['Share your idea or requirement', 'Tell us the goal behind it'],
+      studio: ['Acknowledge and log your inquiry', 'Schedule an intro call'],
       outcome: 'Your idea is on our desk'
     },
     {
-      num: '02', title: 'Discovery & Consultation', phase: 'Plan', img: 'images/02-discovery.jpg',
-      front: 'We get to know your business, goals, and audience.',
+      num: '02', title: 'Discovery & Consultation', phase: 1, driver: 'both', img: 'images/02-discovery.jpg',
+      blurb: 'We get to know your business, goals, and audience.',
       detail: 'We connect on a call, in person, or however suits you — to understand your business, goals, audience, challenges, and what success looks like.',
-      groups: [
-        { label: 'We discuss', items: ['Business and goals', 'Audience and market', 'Challenges and requirements', 'Success metrics'] }
-      ],
+      client: ['Walk us through your business', 'Share goals and challenges'],
+      studio: ['Run the discovery session', 'Probe audience and market', 'Map success metrics'],
       outcome: 'A clear picture of the project'
     },
     {
-      num: '03', title: 'Proposal & Quotation', phase: 'Plan', img: 'images/03-proposal.jpg',
-      front: 'A tailored scope, timeline, and transparent pricing.',
-      detail: 'We analyse your requirements and prepare a custom proposal — project scope, features, estimated timeline, technology, and cost.',
-      groups: [
-        { label: 'The proposal covers', items: ['Project scope and features', 'Estimated timeline', 'Technology stack', 'Transparent pricing'] }
-      ],
+      num: '03', title: 'Requirement Analysis', phase: 1, driver: 'studio', img: 'images/03-proposal.jpg',
+      blurb: 'Your needs become a clear, documented scope.',
+      detail: 'We convert everything from discovery into clear functional and technical requirements — so nothing is lost in translation.',
+      client: ['Provide business requirements', 'Confirm priorities and must-haves'],
+      studio: ['Convert into technical specifications', 'Define scope, dependencies, and risks'],
+      outcome: 'A documented requirement baseline'
+    },
+    {
+      num: '04', title: 'Proposal & Quotation', phase: 1, driver: 'studio', img: 'images/04-agreement.jpg',
+      blurb: 'A tailored scope, timeline, and transparent pricing.',
+      detail: 'We prepare a custom proposal — project scope, features, estimated timeline, technology, and cost. You review it and approve.',
+      client: ['Review the proposal', 'Approve scope and budget'],
+      studio: ['Scope, timeline, and pricing', 'List deliverables and tech stack'],
       outcome: 'Scope and pricing, agreed'
     },
     {
-      num: '04', title: 'Agreement & Documentation', phase: 'Plan', img: 'images/04-agreement.jpg',
-      front: 'The project is formalised on paper.',
-      detail: 'Once the proposal is approved, we formalise the project through the required agreements and documentation.',
-      groups: [
-        { label: 'Agreed and documented', items: ['Scope and deliverables', 'Roles and responsibilities', 'Payment terms and timeline', 'Project conditions'] }
-      ],
-      outcome: 'A clear, signed agreement'
+      num: '05', title: 'Strategy & Planning', phase: 2, driver: 'both', img: 'images/05-design.jpg',
+      blurb: 'We map the roadmap, architecture, and milestones.',
+      detail: 'Before pixels or code, we plan the build — technical architecture, roadmap, content structure, and milestones — so everyone knows the route.',
+      client: ['Confirm priorities and deadlines', 'Provide content and assets'],
+      studio: ['Technical architecture', 'Roadmap and milestones', 'Content structure'],
+      outcome: 'A build-ready plan'
     },
     {
-      num: '05', title: 'Visual Planning & Design Showcase', phase: 'Design', img: 'images/05-design.jpg',
-      front: 'We plan how the product looks and behaves before we build.',
-      detail: 'Before development begins, we visually plan the product look and behaviour — so we build it right the first time.',
-      groups: [
-        { label: 'Includes', items: ['UI/UX design', 'Wireframes and layouts', 'User flows', 'Prototypes and visual concepts'] },
-        { label: 'You', items: ['Review the showcase', 'Share feedback'] }
-      ],
+      num: '06', title: 'UI/UX Design', phase: 2, driver: 'both', img: 'images/06-payment.jpg',
+      blurb: 'We design how it looks and behaves — before we build.',
+      detail: 'Wireframes, user flows, and visual concepts. You review the showcase and we refine until it is approved.',
+      client: ['Review the design showcase', 'Share feedback'],
+      studio: ['Wireframes and user flows', 'Prototypes and visual concepts'],
       outcome: 'An approved visual blueprint'
     },
     {
-      num: '06', title: 'Project Initiation & Advance Payment', phase: 'Design', img: 'images/06-payment.jpg',
-      front: 'The project officially enters production.',
-      detail: 'Once scope and visual direction are confirmed, the agreed advance payment is made and the project officially enters production.',
-      groups: [
-        { label: 'Payment', items: ['Typically 50% upfront', 'Or as agreed in the contract'] }
-      ],
-      outcome: 'Project officially initiated'
-    },
-    {
-      num: '07', title: 'Development', phase: 'Build', img: 'images/07-development.jpg',
-      front: 'We build the actual product.',
-      detail: 'We build the product based on the approved scope and design — clean, fast, and exactly to spec.',
-      groups: [
-        { label: 'In the build', items: ['Frontend and backend', 'Database', 'APIs and integrations', 'AI and automation'] }
-      ],
+      num: '07', title: 'Development', phase: 3, driver: 'studio', img: 'images/07-development.jpg',
+      blurb: 'We build the actual product, clean and to spec.',
+      detail: 'Frontend and backend, database, APIs, integrations, and AI — built against the approved scope and design.',
+      client: ['Provide access and inputs as needed', 'Review progress milestones'],
+      studio: ['Frontend and backend', 'Database, APIs, and integrations', 'AI and automation'],
       outcome: 'The product built to spec'
     },
     {
-      num: '08', title: 'Quality Assurance & Testing', phase: 'Build', img: 'images/08-qa.jpg',
-      front: 'Thorough testing before you ever see it.',
-      detail: 'We test the developed product thoroughly before presenting it for your final review.',
-      groups: [
-        { label: 'Checks', items: ['Functionality and user experience', 'Responsiveness and performance', 'Compatibility and integrations', 'Bug detection and fixes'] }
-      ],
+      num: '08', title: 'Testing & Refinement', phase: 3, driver: 'both', img: 'images/08-qa.jpg',
+      blurb: 'Thorough testing before you ever see it.',
+      detail: 'We test functionality, responsiveness, performance, and compatibility — then polish until it is stable and ready for your review.',
+      client: ['Run user-acceptance checks', 'Report any issues'],
+      studio: ['Functionality and UX testing', 'Performance and compatibility', 'Bug fixes and polish'],
       outcome: 'A stable version for review'
     },
     {
-      num: '09', title: 'Client Review & Approval', phase: 'Launch', img: 'images/09-review.jpg',
-      front: 'You review the product against the agreed requirements.',
-      detail: 'You review the finished product against the agreed requirements and share your feedback with us.',
-      groups: [
-        { label: 'You', items: ['Review the build', 'Share feedback', 'Give final approval'] }
-      ],
-      outcome: 'Approved for launch'
-    },
-    {
-      num: '10', title: 'Deployment & Launch', phase: 'Launch', img: 'images/10-launch.jpg',
-      front: 'Your product goes live.',
-      detail: 'Once approved, we deploy the project to the agreed production environment and complete the launch configuration.',
-      groups: [
-        { label: 'We handle', items: ['Deployment and hosting setup', 'Domain and security', 'Launch configuration'] }
-      ],
+      num: '09', title: 'Deployment', phase: 4, driver: 'studio', img: 'images/09-review.jpg',
+      blurb: 'Your product goes live.',
+      detail: 'We deploy to the agreed production environment and complete the launch configuration — so it is truly ready for the world.',
+      client: ['Confirm go-live date and scope'],
+      studio: ['Deploy to production', 'Launch configuration and checks'],
       outcome: 'Your site or app goes live'
     },
     {
-      num: '11', title: 'Project Handover', phase: 'Launch', img: 'images/11-handover.jpg',
-      front: 'The project — and its keys — are handed to you.',
-      detail: 'We officially hand over the completed project, along with all agreed assets and access.',
-      groups: [
-        { label: 'Handed over', items: ['The completed project', 'Admin and hosting access', 'Domain access', 'Documentation and assets'] }
-      ],
+      num: '10', title: 'Domain & Hosting', phase: 4, driver: 'studio', img: 'images/10-launch.jpg',
+      blurb: 'Your domain, hosting, and security are set up right.',
+      detail: 'We configure your domain, hosting environment, SSL, and backups — the quiet infrastructure that keeps you online.',
+      client: ['Provide domain and account access'],
+      studio: ['Hosting setup and SSL', 'Backups and security', 'Domain configuration'],
+      outcome: 'A secure, always-on home'
+    },
+    {
+      num: '11', title: 'SEO & Analytics', phase: 4, driver: 'studio', img: 'images/11-handover.jpg',
+      blurb: 'Search setup and measurement from day one.',
+      detail: 'Technical SEO, Search Console, sitemaps, and analytics — so you are findable and can see what works from launch.',
+      client: ['Verify analytics access'],
+      studio: ['Technical SEO setup', 'Sitemaps and Search Console', 'Analytics and tracking'],
+      outcome: 'Findable and measurable'
+    },
+    {
+      num: '12', title: 'Handover', phase: 4, driver: 'both', img: 'images/12-closure.jpg',
+      blurb: 'The project — and its keys — are handed to you.',
+      detail: 'We hand over the completed project with all agreed assets, access, and documentation — plus a walkthrough so you feel confident.',
+      client: ['Receive access and credentials', 'Walk through the product'],
+      studio: ['Handover walkthrough', 'Documentation and assets', 'Transfer admin access'],
       outcome: 'Delivered to the client'
     },
     {
-      num: '12', title: 'Project Closure', phase: 'Launch', img: 'images/12-closure.jpg',
-      front: 'Formal completion of the project.',
-      detail: 'After successful delivery and handover, the project is formally completed through the appropriate closure documentation.',
-      groups: [
-        { label: 'Closure', items: ['Completion documentation', 'Final sign-off'] }
-      ],
-      outcome: 'Project officially completed'
-    },
-    {
-      num: '13', title: 'Grow With Us', phase: 'Grow', img: 'images/13-growth.jpg',
-      front: 'The product keeps improving — on your terms, optionally.',
+      num: '13', title: 'Maintenance & Growth', phase: 5, driver: 'both', img: 'images/13-growth.jpg',
+      blurb: 'The product keeps improving — on your terms, optionally.',
       detail: 'Your relationship does not have to end at launch. We can keep supporting and improving your digital product through separate, ongoing services.',
-      groups: [
-        { label: 'Ongoing services', items: ['Maintenance and bug fixes', 'SEO and performance', 'Security and content updates', 'AI and automation enhancements', 'New features and support'] },
-        { label: 'Note', items: ['Charged separately, based on the service or requirement you select'] }
-      ],
+      client: ['Choose services and priorities'],
+      studio: ['Maintenance and updates', 'SEO, security, and performance', 'New features and AI enhancements'],
       outcome: 'A partner for the long run'
     }
   ];
 
-  var total = steps.length;
-  var can3D = !!gsap && !reduced;
-  if (can3D) flow.classList.add('js-flip');
+  var N = steps.length;
+  var SEG = N - 1;
 
-  function build() {
-    steps.forEach(function (s, i) {
-      var row = document.createElement('div');
-      row.className = 'frow';
+  var nodeX = [];
+  var phaseX = [];
+  var nodeSize = 0;
+  var lineY = 0;
+  var railW = 0;
+  var fillPath = null;
+  var curStep = -1;
+  var ticking = false;
 
-      var card = document.createElement('div');
-      card.className = 'fcard' +
-        (i % 2 === 1 ? ' fcard--right' : '') +
-        (i === total - 1 ? ' fcard--final' : '');
-      card.tabIndex = 0;
-      card.setAttribute('role', 'button');
-      card.setAttribute('aria-expanded', 'false');
-      card.setAttribute('aria-label', 'Step ' + s.num + ' — ' + s.title + '. Tap to flip the card open.');
+  function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+  function pad(n) { return String(n).padStart(2, '0'); }
 
-      var front =
-        (s.img ? '<div class="fcard__img" role="presentation" style="background-image:url(' + s.img + ');"></div>' : '') +
-        '<span class="fcard__num">' + s.num + '</span>' +
-        '<span class="fcard__phase">' + s.phase + '</span>' +
-        '<div class="fcard__body">' +
-          '<h3 class="fcard__title">' + s.title + '</h3>' +
-          '<p class="fcard__sub">' + s.front + '</p>' +
+  var driverMap = {
+    client: ['CLIENT', '→', 'STUDIO'],
+    studio: ['STUDIO', '→', 'CLIENT'],
+    both:   ['CLIENT', '↔', 'STUDIO']
+  };
+
+  function roleHTML(label, items, isClient) {
+    return '<div class="jrole' + (isClient ? ' jrole--client' : ' jrole--studio') + '">' +
+      '<p class="jrole__label">' + label + '</p>' +
+      '<ul class="jrole__list">' + items.map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul>' +
+    '</div>';
+  }
+
+  function cardHTML(s) {
+    return '<div class="jcard__bg" style="background-image:url(' + s.img + ');"></div>' +
+      '<div class="jcard__content">' +
+        '<span class="jcard__num">' + s.num + '</span>' +
+        '<span class="jcard__chip">' + phases[s.phase].name + '</span>' +
+        '<h3 class="jcard__title">' + s.title + '</h3>' +
+        '<p class="jcard__blurb">' + s.blurb + '</p>' +
+        '<div class="jcard__driver">' +
+          '<span class="jcard__who">' + driverMap[s.driver][0] + '</span>' +
+          '<i class="jcard__flow">' + driverMap[s.driver][1] + '</i>' +
+          '<span class="jcard__who">' + driverMap[s.driver][2] + '</span>' +
         '</div>' +
-        '<span class="fcard__hint">tap to flip</span>';
-
-      var back =
-        '<span class="fcard__phase">' + s.num + ' · ' + s.phase + '</span>' +
-        '<h3 class="fcard__back-title">' + s.title + '</h3>' +
-        '<p class="fcard__detail">' + s.detail + '</p>' +
-        s.groups.map(function (g) {
-          return '<div class="fgroup">' +
-            '<p class="fgroup__label">' + g.label + '</p>' +
-            '<ul class="fgroup__list">' +
-              g.items.map(function (it) { return '<li>' + it + '</li>'; }).join('') +
-            '</ul>' +
-          '</div>';
-        }).join('') +
-        '<span class="fcard__outcome">' + s.outcome + '</span>';
-
-      var frontCls = 'fcard__front' + (s.img ? ' fcard__front--img' : '');
-      card.innerHTML = '<div class="' + frontCls + '">' + front + '</div><div class="fcard__back">' + back + '</div>';
-      row.appendChild(card);
-      list.appendChild(row);
-    });
+      '</div>';
   }
 
-  function flipCard(card, force, fast) {
-    var open = (typeof force === 'boolean') ? force : !card._open;
-    card._open = open;
-    card.classList.toggle('is-flipped', open);
-    card.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if (!can3D) return;
-    if (card._tl) { card._tl.kill(); card._tl = null; }
-    card.classList.add('is-flipping');
-    var tl = gsap.timeline({
-      onComplete: function () { card.classList.remove('is-flipping'); },
-      defaults: { transformPerspective: 1600 }
-    });
-    card._tl = tl;
-    tl.to(card, { rotationY: 90, duration: fast ? 0.32 : 0.46, ease: 'power2.in', y: -18, scale: 0.94 })
-      .to(card, { rotationY: open ? 180 : 0, duration: fast ? 0.4 : 0.64, ease: 'power3.out', y: 0, scale: 1 });
+  function panelHTML(s, i) {
+    return '<div class="jpanel__head">' +
+        '<span class="jpanel__kicker">Step details</span>' +
+        '<span class="jpanel__index">' + pad(i + 1) + ' / ' + pad(N) + '</span>' +
+      '</div>' +
+      '<h3 class="jpanel__title">' + s.title + '</h3>' +
+      '<p class="jpanel__detail">' + s.detail + '</p>' +
+      '<div class="jpanel__roles">' +
+        roleHTML('CLIENT', s.client, true) +
+        roleHTML('STUDIO', s.studio, false) +
+      '</div>' +
+      '<span class="jpanel__outcome">' + s.outcome + '</span>' +
+      '<div class="jpanel__nav">' +
+        '<button type="button" class="jpanel__btn" data-jstep="prev" aria-label="Previous step"' + (i === 0 ? ' disabled' : '') + '>←</button>' +
+        '<button type="button" class="jpanel__btn" data-jstep="next" aria-label="Next step"' + (i === N - 1 ? ' disabled' : '') + '>→</button>' +
+      '</div>';
   }
 
-  function animateIn() {
-    if (entered) return;
-    entered = true;
-    if (!can3D) return;
-    gsap.fromTo(cards, { y: 30, opacity: 0 }, {
-      y: 0, opacity: 1, duration: 0.7, stagger: 0.07, ease: 'power3.out',
-      clearProps: 'transform,opacity', overwrite: true
-    });
-  }
+  /* ---------- build ---------- */
+  function build() {
+    labelsEl.innerHTML = phases.map(function (p, i) {
+      return '<span class="journey__label" data-phase="' + i + '">' + p.name + '</span>';
+    }).join('');
 
-  function drawConnectors() {
-    var w = flow.clientWidth;
-    var h = flow.clientHeight;
-    var rect = flow.getBoundingClientRect();
-    var cardNodes = list.querySelectorAll('.fcard');
-    if (!cardNodes.length) return;
+    nodesEl.innerHTML = steps.map(function (s, i) {
+      return '<li class="journey__node" data-step="' + i + '" tabindex="0" role="button" aria-label="Step ' + s.num + ' — ' + s.title + '">' + s.num + '</li>';
+    }).join('');
 
-    var spine = w < 560 ? 16 : w / 2;
-    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
-    while (svg.firstChild) svg.removeChild(svg.firstChild);
-
-    var ns = 'http://www.w3.org/2000/svg';
-    function el(name, attrs, cls) {
-      var n = document.createElementNS(ns, name);
-      if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
-      if (cls) n.setAttribute('class', cls);
-      return n;
-    }
-
-    var first = cardNodes[0].getBoundingClientRect();
-    var last = cardNodes[cardNodes.length - 1].getBoundingClientRect();
-    var topY = first.top - rect.top - 24;
-    var bottomY = last.bottom - rect.top + 24;
-
-    svg.appendChild(el('path', {
-      d: 'M ' + spine + ' ' + topY + ' L ' + spine + ' ' + bottomY
-    }, 'flow__spine'));
-
-    svg.appendChild(el('circle', { cx: spine, cy: topY, r: 4 }, 'flow__node'));
-    svg.appendChild(el('circle', { cx: spine, cy: bottomY, r: 4 }, 'flow__node--end'));
-
-    var junctions = [];
-    dots = [];
-    cardNodes.forEach(function (card) {
-      var r = card.getBoundingClientRect();
-      var cy = r.top - rect.top + r.height / 2;
-      var inner = (r.right - rect.left) < spine ? (r.right - rect.left) : (r.left - rect.left);
-      junctions.push({ cy: cy, inner: inner });
-      svg.appendChild(el('path', {
-        d: 'M ' + inner + ' ' + cy + ' L ' + spine + ' ' + cy
-      }, 'flow__link'));
-      var dot = el('circle', { cx: spine, cy: cy, r: 4 }, 'flow__dot');
-      svg.appendChild(dot);
-      dots.push(dot);
-    });
-
-    journey = [{ x: spine, y: topY, visit: -1, dist: 0 }];
-    junctions.forEach(function (j, i) {
-      journey.push({ x: spine, y: j.cy, visit: i, dist: 0 });
-    });
-    journey.push({ x: spine, y: bottomY, visit: -1, dist: 0 });
-
-    cardDist = [];
-    var d = 0;
-    for (var k = 1; k < journey.length; k++) {
-      var a = journey[k - 1];
-      var b = journey[k];
-      d += Math.hypot(b.x - a.x, b.y - a.y);
-      b.dist = d;
-      if (b.visit >= 0) cardDist[b.visit] = d;
-    }
-    totalLen = d;
-  }
-
-  function ensurePilot() {
-    if (pilot) return pilot;
-    pilot = document.createElement('div');
-    pilot.className = 'flow__pilot';
-    pilot.setAttribute('aria-hidden', 'true');
-    var img = document.createElement('img');
-    img.className = 'flow__pilot-avatar';
-    img.src = 'images/client-avatar.jpg';
-    img.alt = '';
-    pilot.appendChild(img);
-    svg.parentNode.insertBefore(pilot, svg.nextSibling);
-    return pilot;
-  }
-
-  function pointAtDistance(d) {
-    if (!journey || !journey.length) return null;
-    if (d <= 0) return { x: journey[0].x, y: journey[0].y };
-    var last = journey[journey.length - 1];
-    if (d >= totalLen) return { x: last.x, y: last.y };
-    var a = journey[0];
-    for (var i = 1; i < journey.length; i++) {
-      var b = journey[i];
-      if (d <= b.dist) {
-        var seg = b.dist - a.dist;
-        var t = seg > 0 ? (d - a.dist) / seg : 0;
-        return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t };
-      }
-      a = b;
-    }
-    return null;
-  }
-
-  function updatePilot() {
-    if (!can3D || !journey) return;
-    var rect = flow.getBoundingClientRect();
-    if (!rect.height) return;
-    var p = (window.innerHeight * 0.68 - rect.top) / rect.height;
-    if (p < 0) p = 0;
-    else if (p > 1) p = 1;
-    var d = p * totalLen;
-    var pt = pointAtDistance(d);
-    if (!pt) return;
-    ensurePilot();
-    gsap.set(pilot, { x: pt.x, y: pt.y });
-    cards.forEach(function (card, i) {
-      var open = cardDist[i] !== undefined && d >= cardDist[i];
-      if (!card._manual && open !== card._open) flipCard(card, open, true);
-      if (dots[i]) dots[i].classList.toggle('is-active', open);
-    });
-  }
-
-  function onScroll() {
-    if (!can3D || scrollTick) return;
-    scrollTick = true;
-    window.requestAnimationFrame(function () {
-      scrollTick = false;
-      updatePilot();
-    });
-  }
-
-  function redraw() {
-    drawConnectors();
-    updatePilot();
-  }
-
-  function enterFlow() {
-    animateIn();
-    updatePilot();
-  }
-
-  build();
-  cards = Array.prototype.slice.call(list.querySelectorAll('.fcard'));
-
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) enterFlow();
+    Array.prototype.forEach.call(nodesEl.querySelectorAll('.journey__node'), function (n, i) {
+      n.addEventListener('click', function () { goTo(i); });
+      n.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        e.preventDefault();
+        goTo(i);
       });
-    }, { threshold: 0.12 });
-    io.observe(flow);
-  } else {
-    enterFlow();
+    });
+
+    cards.innerHTML = steps.map(function (s, i) {
+      return '<article class="journey__slide" data-step="' + i + '">' +
+        '<div class="journey__card">' + cardHTML(s) + '</div>' +
+        '<aside class="journey__panel">' + panelHTML(s, i) + '</aside>' +
+      '</article>';
+    }).join('');
+
+    mCards.innerHTML = steps.map(function (s, i) {
+      return '<article class="jmcard" data-jm="' + i + '">' +
+        '<div class="jmcard__bg" style="background-image:url(' + s.img + ');"></div>' +
+        '<div class="jmcard__content">' +
+          '<div class="jmcard__top">' +
+            '<span class="jmcard__chip">' + phases[s.phase].name + '</span>' +
+            '<span class="jmcard__index">' + s.num + ' / ' + pad(N) + '</span>' +
+          '</div>' +
+          '<h3 class="jmcard__title">' + s.title + '</h3>' +
+          '<p class="jmcard__detail">' + s.detail + '</p>' +
+          '<div class="jmcard__roles">' +
+            roleHTML('CLIENT', s.client, true) +
+            roleHTML('STUDIO', s.studio, false) +
+          '</div>' +
+          '<span class="jmcard__outcome">' + s.outcome + '</span>' +
+        '</div>' +
+      '</article>';
+    }).join('');
   }
 
-  function onCardInteract(card) {
-    card._manual = true;
-    flipCard(card);
+  /* ---------- geometry (rail timeline) ---------- */
+  function measure() {
+    railW = nodesEl.clientWidth;
+    if (!railW) return;
+
+    var nodes = nodesEl.querySelectorAll('.journey__node');
+    nodeSize = nodes.length ? nodes[0].offsetWidth : 36;
+
+    var inset = nodeSize / 2 + 6;
+    nodeX = [];
+    for (var i = 0; i < N; i++) {
+      nodeX.push(inset + (i / SEG) * (railW - inset * 2));
+    }
+
+    lineY = nodesEl.clientHeight / 2;
+    var nx = nodesEl.offsetLeft;
+    var ny = nodesEl.offsetTop;
+
+    phaseX = phases.map(function (p) {
+      return (nodeX[p.from] + nodeX[p.to]) / 2;
+    });
+    Array.prototype.forEach.call(labelsEl.querySelectorAll('.journey__label'), function (l, i) {
+      l.style.left = phaseX[i] + 'px';
+    });
+
+    lineSvg.style.left = nx + 'px';
+    lineSvg.style.top = ny + 'px';
+    lineSvg.style.width = railW + 'px';
+    lineSvg.style.height = nodesEl.clientHeight + 'px';
+    lineSvg.setAttribute('viewBox', '0 0 ' + railW + ' ' + nodesEl.clientHeight);
+    lineSvg.innerHTML = '';
+    var ns = 'http://www.w3.org/2000/svg';
+    function pathEl(cls) {
+      var p = document.createElementNS(ns, 'path');
+      p.setAttribute('d', 'M ' + nodeX[0] + ' ' + lineY + ' L ' + nodeX[N - 1] + ' ' + lineY);
+      p.setAttribute('pathLength', '1');
+      p.setAttribute('class', cls);
+      lineSvg.appendChild(p);
+      return p;
+    }
+    var basePath = pathEl('journey__trackline');
+    fillPath = pathEl('journey__fill');
+    fillPath.setAttribute('stroke-dasharray', '1');
+    fillPath.setAttribute('stroke-dashoffset', '1');
+
+    Array.prototype.forEach.call(nodes, function (n, i) {
+      n.style.left = (nodeX[i] - nodeSize / 2) + 'px';
+      n.style.top = (lineY - nodeSize / 2) + 'px';
+    });
+
+    pilot.style.left = (nx + nodeX[0]) + 'px';
+    pilot.style.top = (ny + lineY) + 'px';
   }
-  cards.forEach(function (card) {
-    card.addEventListener('click', function () { onCardInteract(card); });
-    card.addEventListener('keydown', function (e) {
-      if (e.key !== 'Enter' && e.key !== ' ') return;
-      e.preventDefault();
-      onCardInteract(card);
+
+  /* ---------- state (transform carousel · one card at a time) ---------- */
+  function render() {
+    if (curStep < 0) return;
+    var i = curStep;
+    var s = steps[i];
+    var p = i / SEG;
+
+    Array.prototype.forEach.call(nodesEl.querySelectorAll('.journey__node'), function (n, k) {
+      n.classList.toggle('is-past', k < i);
+      n.classList.toggle('is-current', k === i);
+    });
+
+    var pi = 0;
+    for (var k = 0; k < phases.length; k++) {
+      if (i >= phases[k].from && i <= phases[k].to) { pi = k; break; }
+    }
+    Array.prototype.forEach.call(labelsEl.querySelectorAll('.journey__label'), function (l, k) {
+      l.classList.toggle('is-active', k === pi);
+    });
+
+    if (fillPath) fillPath.setAttribute('stroke-dashoffset', String(1 - p));
+    if (nodeX.length && nodeX[i] !== undefined) {
+      pilot.style.left = (nodesEl.offsetLeft + nodeX[i]) + 'px';
+    }
+
+    if (statusEl) {
+      statusEl.textContent = 'Step ' + pad(i + 1) + ' of ' + pad(N) + ' — ' + s.title + '. ' + phases[pi].name + ' phase.';
+    }
+  }
+
+  function setStep(i) {
+    if (i === curStep) return;
+    curStep = i;
+    render();
+  }
+
+  /* ---------- navigation ---------- */
+  function goTo(i) {
+    i = clamp(i, 0, N - 1);
+    if (isMobile.matches) return;
+    cards.style.transform = 'translateX(' + (-i * 100) + '%)';
+    setStep(i);
+  }
+
+  deck.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-jstep]');
+    if (!btn) return;
+    goTo(curStep + (btn.getAttribute('data-jstep') === 'prev' ? -1 : 1));
+  });
+
+  deck.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') {
+      if (curStep < N - 1) { e.preventDefault(); goTo(curStep + 1); }
+    } else if (e.key === 'ArrowLeft') {
+      if (curStep > 0) { e.preventDefault(); goTo(curStep - 1); }
+    }
+  });
+
+  /* one card per swipe / drag — no free scroll */
+  var dragging = false;
+  var startX = 0;
+  var startY = 0;
+  var dragActive = false;
+
+  function endDrag(dx) {
+    dragging = false;
+    dragActive = false;
+    cards.style.transition = '';
+    var w = deck.clientWidth || 1;
+    if (dx !== null && Math.abs(dx) > Math.min(56, w * 0.18)) {
+      goTo(curStep + (dx < 0 ? 1 : -1));
+    } else {
+      goTo(curStep);
+    }
+  }
+
+  deck.addEventListener('pointerdown', function (e) {
+    if (isMobile.matches) return;
+    if (e.target.closest('button, a')) return;
+    dragging = true;
+    dragActive = false;
+    startX = e.clientX;
+    startY = e.clientY;
+    cards.style.transition = 'none';
+    try { deck.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+
+  deck.addEventListener('pointermove', function (e) {
+    if (!dragging) return;
+    var dx = e.clientX - startX;
+    var dy = e.clientY - startY;
+    if (!dragActive) {
+      if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+      if (Math.abs(dx) <= Math.abs(dy)) return;
+      dragActive = true;
+    }
+    cards.style.transform = 'translateX(calc(' + (-curStep * 100) + '% + ' + dx + 'px))';
+  });
+
+  deck.addEventListener('pointerup', function (e) {
+    if (!dragging) return;
+    endDrag(e.clientX - startX);
+  });
+
+  deck.addEventListener('pointercancel', function () {
+    if (!dragging) return;
+    endDrag(null);
+  });
+
+
+  /* ---------- mobile carousel ---------- */
+  function mobileStepWidth() {
+    var c = mCards.firstElementChild;
+    return c ? c.getBoundingClientRect().width + 16 : 0;
+  }
+  function mobileIndex() {
+    var w = mobileStepWidth();
+    if (!w) return 0;
+    return Math.min(N - 1, Math.max(0, Math.round(mCards.scrollLeft / w)));
+  }
+  function renderMobile(i) {
+    var s = steps[i];
+    mIndex.textContent = pad(i + 1) + ' / ' + pad(N);
+    mPhase.textContent = phases[s.phase].name;
+    if (mFill) mFill.style.width = ((i + 1) / N) * 100 + '%';
+  }
+  function goMobile(d) {
+    var w = mobileStepWidth();
+    if (!w) return;
+    var i = Math.min(N - 1, Math.max(0, mobileIndex() + d));
+    mCards.scrollTo({ left: i * w, behavior: reduced ? 'auto' : 'smooth' });
+    renderMobile(i);
+  }
+
+  document.querySelectorAll('[data-jm]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      goMobile(btn.getAttribute('data-jm') === 'prev' ? -1 : 1);
     });
   });
 
-  redraw();
-  window.addEventListener('load', redraw);
-  window.requestAnimationFrame(redraw);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(redraw);
+  mCards.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); goMobile(-1); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); goMobile(1); }
+  });
 
-  var drawPending = null;
-  window.addEventListener('resize', function () {
-    if (drawPending) return;
-    drawPending = true;
+  var mTick = false;
+  mCards.addEventListener('scroll', function () {
+    if (mTick) return;
+    mTick = true;
     window.requestAnimationFrame(function () {
-      drawPending = false;
-      redraw();
+      mTick = false;
+      renderMobile(mobileIndex());
     });
   }, { passive: true });
-  window.addEventListener('scroll', onScroll, { passive: true });
 
-  if ('ResizeObserver' in window) {
-    var ro = new ResizeObserver(function () {
-      if (drawPending) return;
-      drawPending = true;
-      window.requestAnimationFrame(function () {
-        drawPending = false;
-        redraw();
-      });
+  /* ---------- init ---------- */
+  build();
+  curStep = 0;
+  render();
+  renderMobile(0);
+  measure();
+  render();
+
+  window.addEventListener('load', function () { measure(); render(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { measure(); render(); });
+  window.setTimeout(function () { measure(); render(); }, 600);
+
+  window.addEventListener('resize', function () {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(function () {
+      ticking = false;
+      measure();
+      if (isMobile.matches) renderMobile(mobileIndex());
+      else setStep(curStep);
     });
-    ro.observe(flow);
-  }
-  window.setTimeout(redraw, 600);
+  }, { passive: true });
 })();

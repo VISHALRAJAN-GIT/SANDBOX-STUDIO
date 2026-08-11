@@ -85,19 +85,44 @@
       <div class="cards" id="servicesCards" role="group" aria-label="Service experiments"></div>
     </section>
 
-    <!-- Process · connected map of flip cards -->
+    <!-- Process · sticky journey — timeline navigation + client/studio detail -->
     <section class="section process" id="workflow" aria-labelledby="workflowTitle">
       <div class="section__inner">
         <header class="section__head">
           <p class="section__label">Process · Sandbox Studio</p>
           <h2 class="section__title" id="workflowTitle">From idea, to launch, to growth.</h2>
-          <p class="section__sub">Thirteen connected steps take you from the first hello to a product that keeps improving. Scroll and the client avatar travels the line, flipping each card open — or tap any card yourself.</p>
+          <p class="section__sub">Thirteen steps across six phases take you from the first hello to a product that keeps improving. Scroll one step at a time — or tap a node — and see who does what, at every stop.</p>
         </header>
       </div>
 
-      <div class="flow" id="flow" aria-label="Our workflow — from idea to launch to growth">
-        <svg class="flow__connectors" id="flowConnectors" aria-hidden="true" focusable="false"></svg>
-        <div class="flow__list" id="flowList"></div>
+      <div class="journey" id="journey" aria-label="Our journey — from idea to launch to growth">
+        <div class="journey__rail" id="journeyRail">
+          <div class="journey__labels" id="journeyLabels"></div>
+          <ol class="journey__nodes" id="journeyNodes"></ol>
+          <svg class="journey__line" id="journeyLine" aria-hidden="true" focusable="false"></svg>
+          <div class="journey__pilot" id="journeyPilot" aria-hidden="true">
+            <img class="journey__pilot-avatar" src="images/client-avatar.jpg" alt="" draggable="false" />
+          </div>
+        </div>
+
+        <div class="journey__deck" id="journeyDeck" tabindex="0" aria-label="Process steps — swipe sideways or use the arrows">
+          <div class="journey__cards" id="journeyCards"></div>
+        </div>
+
+        <div class="journey__mobile" id="journeyMobile">
+          <div class="journey__mhead">
+            <span class="journey__mindex" id="journeyMIndex">01 / 13</span>
+            <span class="journey__mphase" id="journeyMPhase">Start</span>
+          </div>
+          <div class="journey__mcards" id="journeyMCards" tabindex="0" aria-label="Process steps — swipe to browse"></div>
+          <div class="journey__mnav">
+            <button class="journey__mbtn" type="button" data-jm="prev" aria-label="Previous step">←</button>
+            <span class="journey__mbar"><span class="journey__mfill" id="journeyMFill"></span></span>
+            <button class="journey__mbtn" type="button" data-jm="next" aria-label="Next step">→</button>
+          </div>
+        </div>
+
+        <span class="visually-hidden" id="journeyStatus" aria-live="polite"></span>
       </div>
     </section>
   </main>
