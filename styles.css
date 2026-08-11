@@ -246,7 +246,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .nav__toggle[aria-expanded="true"] span:first-child { transform: translateY(4px) rotate(45deg); }
 .nav__toggle[aria-expanded="true"] span:last-child  { transform: translateY(-4px) rotate(-45deg); }
 
-/* ---------- home page video background ---------- */
+/* ---------- home · creative reveal — idea → finished site ---------- */
 .page {
   position: relative;
 }
@@ -256,50 +256,82 @@ button, input, select, textarea { font: inherit; color: inherit; }
   min-height: 100svh;
   scroll-snap-align: start;
 }
-.page__bg {
+.transformation {
   position: absolute;
   inset: 0;
   overflow: hidden;
   background: var(--color-dark);
 }
-.page__video,
-.bg__frames {
+.transformation__img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  object-position: center;
+  will-change: clip-path, opacity, transform;
 }
-.bg__frames {
+.transformation__before { z-index: 1; }
+.transformation__after {
+  z-index: 2;
+  clip-path: inset(0 100% 0 0); /* hidden → revealed by the sweep */
+}
+.transformation__line {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: oklch(80% 0.05 75);
+  box-shadow:
+    0 0 24px 4px oklch(80% 0.05 75 / 0.4),
+    0 0 60px 12px oklch(90% 0.03 80 / 0.18);
+  will-change: left;
+}
+.transformation__line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -34px;
+  width: 68px;
+  background: linear-gradient(to right,
+    transparent 0%,
+    oklch(92% 0.03 80 / 0.32) 50%,
+    transparent 100%);
+  pointer-events: none;
+}
+.transformation__sand {
   position: absolute;
   inset: 0;
-  overflow: hidden;
-  background: var(--color-dark);
-  animation: bg-zoom 26s var(--ease-in-out) infinite alternate;
-  will-change: transform;
-}
-@keyframes bg-zoom {
-  from { transform: scale(1.03); }
-  to   { transform: scale(1.1); }
-}
-.bg__layer {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  z-index: 4;
+  pointer-events: none;
   opacity: 0;
-  z-index: 1;
-  will-change: opacity, background-image;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E");
 }
-.bg__layer--a { opacity: 1; }
-@media (hover: none) { .page__video, .bg__frames { filter: none; } }
-.page__scrim {
+.hero-tag {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom,
-    oklch(95% 0.02 80 / 0.35) 0%,
-    oklch(95% 0.02 80 / 0.06) 50%,
-    oklch(20% 0.018 55 / 0.28) 100%);
+  z-index: 5;
+  left: 50%;
+  bottom: clamp(1.5rem, 5vh, 3rem);
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 0.4rem 1rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+  color: oklch(96% 0.02 80 / 0.9);
+  background: oklch(20% 0.018 55 / 0.28);
+  border-radius: 999px;
+  border: 1px solid oklch(90% 0.03 80 / 0.18);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: none;
 }
 
 /* ---------- products · 3D carousel ---------- */
@@ -471,7 +503,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .card__name { font-size: var(--text-xl); }
   .card__shot { border-radius: 14px; }
 }
-@media (hover: none) { .page__video { filter: none; } }
+@media (hover: none) { .transformation__img { filter: none; } }
 
 /* ---------- fullscreen viewer ---------- */
 .viewer {
@@ -1431,7 +1463,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
     transition-duration: 150ms !important;
   }
   html { scroll-behavior: auto; }
-  .page__video { display: none; }
+  .transformation__after { clip-path: none; }
+  .transformation__before { display: none; }
 }
 
 /* ============================================================

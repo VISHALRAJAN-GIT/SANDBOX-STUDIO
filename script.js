@@ -1,94 +1,47 @@
 /* Sandbox Web Studio — interactions */
 
-/* ---------- home · video-frame background · auto-playing like a video ---------- */
+/* ---------- home · creative reveal — sketch (before) sweeps into the finished site (after) ---------- */
+/* timeline: BEFORE 2.5s → REVEAL 3s → AFTER 4s → REVERSE 3s → repeat (~12.5s loop) */
 (function () {
   'use strict';
 
-  var stage = document.getElementById('bgFrames');
+  var stage = document.getElementById('heroTransformation');
   if (!stage) return;
 
-  var layerA = stage.querySelector('.bg__layer--a');
-  var layerB = stage.querySelector('.bg__layer--b');
-  if (!layerA || !layerB) return;
+  var before = stage.querySelector('.transformation__before');
+  var after = stage.querySelector('.transformation__after');
+  var line = stage.querySelector('.transformation__line');
+  var sand = stage.querySelector('.transformation__sand');
+  if (!before || !after || !line) return;
 
-  var total = 35;
-  function path(i) { return 'frames/frame-' + (i < 10 ? '0' : '') + i + '.jpg'; }
-
-  var paths = [];
-  for (var i = 1; i <= total; i++) paths.push(path(i));
-
-  var loaded = 0;
-  var ready = false;
-  var next = 0;
-  var back = layerA;
-  var front = layerB;
-  var raf = null;
-  var timer = null;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var FRAME_MS = 160;
-  var CROSSFADE_MS = Math.max(30, Math.min(220, FRAME_MS * 0.45));
+  var HOLD_BEFORE = 2.5;
+  var REVEAL = 3;
+  var HOLD_AFTER = 4;
+  var REVERSE = 3;
 
-  function setOpacity(el, v) { el.style.opacity = String(v); }
-
-  function start() {
-    if (ready) return;
-    ready = true;
-    back.style.backgroundImage = 'url("' + paths[0] + '")';
-    back.style.zIndex = '1';
-    front.style.zIndex = '2';
-    setOpacity(back, 1);
-    setOpacity(front, 0);
-    next = 1;
-    if (!reduced) schedule();
+  if (reduced || typeof window.gsap === 'undefined') {
+    before.style.display = 'none';
+    after.style.clipPath = 'none';
+    return;
   }
 
-  function advance() {
-    if (!ready) return;
-    var i = next;
-    next = (next + 1) % total;
-    if (raf) cancelAnimationFrame(raf);
-    var from = parseFloat(front.style.opacity) || 0;
-    front.style.backgroundImage = 'url("' + paths[i] + '")';
-    var t0 = null;
+  gsap.set(after, { clipPath: 'inset(0 100% 0 0)' });
+  gsap.set(line, { left: '0%' });
+  gsap.set(sand, { autoAlpha: 0 });
 
-    function tickFn(now) {
-      if (t0 === null) t0 = now;
-      var t = (now - t0) / CROSSFADE_MS;
-      if (t > 1) t = 1;
-      var eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-      setOpacity(front, from + (1 - from) * eased);
-      if (t < 1) {
-        raf = requestAnimationFrame(tickFn);
-      } else {
-        raf = null;
-        setOpacity(front, 1);
-        var tmp = back; back = front; front = tmp;
-        setOpacity(front, 0);
-        front.style.zIndex = '2';
-        back.style.zIndex = '1';
-      }
-    }
-    raf = requestAnimationFrame(tickFn);
-  }
+  var tl = gsap.timeline({ repeat: -1, defaults: { ease: 'power1.inOut' } });
 
-  function schedule() {
-    timer = window.setTimeout(function () {
-      advance();
-      schedule();
-    }, FRAME_MS);
-  }
-
-  function onFrameReady() {
-    loaded++;
-    if (loaded >= total) start();
-  }
-
-  paths.forEach(function (p) {
-    var img = new Image();
-    img.onload = onFrameReady;
-    img.onerror = onFrameReady;
-    img.src = p;
-  });
+  tl.to({}, { duration: HOLD_BEFORE })
+    .to(after, { clipPath: 'inset(0 0% 0 0)', duration: REVEAL }, 'reveal')
+    .to(line, { left: '100%', duration: REVEAL }, 'reveal')
+    .to(before, { scale: 1.05, opacity: 0.92, duration: REVEAL }, 'reveal')
+    .to(sand, { autoAlpha: 0.55, duration: REVEAL }, 'reveal')
+    .to({}, { duration: HOLD_AFTER })
+    .to(after, { clipPath: 'inset(0 100% 0 0)', duration: REVERSE }, 'reverse')
+    .to(line, { left: '0%', duration: REVERSE }, 'reverse')
+    .to(before, { scale: 1, opacity: 1, duration: REVERSE }, 'reverse')
+    .to(sand, { autoAlpha: 0, duration: REVERSE }, 'reverse');
 })();
 
 /* ---------- mobile nav toggle ---------- */
