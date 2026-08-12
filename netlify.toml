@@ -1,9 +1,90 @@
-﻿# Netlify — static site, no build step
+# Netlify - static site, no build step
 [build]
   publish = "."
   command = ""
 
-# sitemap.xml / robots.txt — short cache so search engines pick up changes quickly
+# Keep old public URLs working after the folder reorg (HTML/, CSS/, JS/, ASSETS/, IMAGES/, SERVICES/, SEO/)
+[[redirects]]
+  from = "/"
+  to = "/HTML/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/index.html"
+  to = "/HTML/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog.html"
+  to = "/HTML/blog.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog"
+  to = "/HTML/blog.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog/"
+  to = "/HTML/blog.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/SEO/blog/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/services/*"
+  to = "/SERVICES/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/css/*"
+  to = "/CSS/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/js/*"
+  to = "/JS/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/assets/*"
+  to = "/ASSETS/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/images/*"
+  to = "/IMAGES/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/sandbox hero after.png"
+  to = "/CSS/sandbox hero after.png"
+  status = 200
+
+[[redirects]]
+  from = "/sandboxhero before.png"
+  to = "/CSS/sandboxhero before.png"
+  status = 200
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/SEO/sitemap.xml"
+  status = 200
+
+[[redirects]]
+  from = "/robots.txt"
+  to = "/SEO/robots.txt"
+  status = 200
+
+[[redirects]]
+  from = "/404.html"
+  to = "/HTML/404.html"
+  status = 200
+
+# sitemap.xml / robots.txt - short cache so search engines pick up changes quickly
 [[headers]]
   for = "/sitemap.xml"
   [headers.values]
@@ -14,14 +95,14 @@
   [headers.values]
     Cache-Control = "public, max-age=86400"
 
-# Hero before/after images — stable filenames, cache aggressively (each deploy purges it)
+# Hero before/after images - stable filenames, cache aggressively (each deploy purges it)
 [[headers]]
   for = "/ASSETS/images/hero/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Homepage — preload both hero images so first paint is faster
+# Homepage - preload both hero images so first paint is faster
 [[headers]]
-  for = "/HTML/"
+  for = "/"
   [headers.values]
     Link = "</ASSETS/images/hero/before.png>; rel=preload; as=image, </ASSETS/images/hero/after.png>; rel=preload; as=image; fetchpriority=high"
