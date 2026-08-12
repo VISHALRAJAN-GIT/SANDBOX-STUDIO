@@ -16,12 +16,12 @@
 
 # Hero before/after images — stable filenames, cache aggressively (each deploy purges it)
 [[headers]]
-  for = "/assets/images/hero/*"
+  for = "/ASSETS/images/hero/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
 # Homepage — preload both hero images so first paint is faster
 [[headers]]
-  for = "/"
+  for = "/HTML/"
   [headers.values]
-    Link = "</assets/images/hero/before.png>; rel=preload; as=image, </assets/images/hero/after.png>; rel=preload; as=image; fetchpriority=high"
+    Link = "</ASSETS/images/hero/before.png>; rel=preload; as=image, </ASSETS/images/hero/after.png>; rel=preload; as=image; fetchpriority=high"

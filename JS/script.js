@@ -193,7 +193,7 @@
       card.setAttribute('tabindex', '0');
       card.setAttribute('aria-label', item.name + ' website screenshot, card ' + (i + 1) + ' of ' + total);
       card.innerHTML =
-        '<img class="card__shot" data-src="assets/img/screens/' + item.slug + '.jpg" alt="' + item.name + ' website screenshot" decoding="async" draggable="false" />' +
+        '<img class="card__shot" data-src="../ASSETS/img/screens/' + item.slug + '.jpg" alt="' + item.name + ' website screenshot" decoding="async" draggable="false" />' +
         '<div class="card__cap"><span class="card__name"></span><span class="card__tag"></span></div>';
       card.querySelector('.card__name').textContent = item.name;
       card.querySelector('.card__tag').textContent = item.tag;
@@ -355,7 +355,7 @@
   function navViewer(d) {
     idx = ((idx + d) % total + total) % total;
     var item = items[idx];
-    viewerImg.src = 'assets/img/screens/' + item.slug + '.jpg';
+    viewerImg.src = '../ASSETS/img/screens/' + item.slug + '.jpg';
     viewerImg.alt = item.name + ' website screenshot';
     viewerName.textContent = item.name + ' · ' + item.tag;
     viewerIndex.textContent = pad(idx + 1) + ' / ' + pad(total);
@@ -507,7 +507,7 @@
       features: ['Core Web Vitals tuned', 'Responsive & accessible', 'Headless-ready stacks', 'Conversion-focused build', 'Ongoing performance budget'],
       tech: ['HTML/CSS/JS', 'React', 'Vercel', 'Headless CMS'],
       url: 'sandbox.studio/apps',
-      photo: 'assets/img/screens/image.png',
+      photo: '../ASSETS/img/screens/image.png',
       shot: '<div class="shot__site">' +
         '<div class="shot__nav"><i class="shot__logo"></i><i class="shot__navlink" style="width:30px"></i><i class="shot__navlink" style="width:24px"></i><i class="shot__navlink" style="width:26px"></i></div>' +
         '<div class="shot__hero shot__hero--sm"><i class="shot__line shot__line--dark"></i><i class="shot__line shot__line--short"></i></div>' +
@@ -525,7 +525,7 @@
       features: ['Technical SEO audits', 'Keyword & intent research', 'On-page optimization', 'Local SEO & Google Business', 'Monthly ranking reports'],
       tech: ['Search Console', 'Screaming Frog', 'Ahrefs', 'Schema.org'],
       url: 'sandbox.studio/seo',
-      photo: 'assets/img/screens/seo.png',
+      photo: '../ASSETS/img/screens/seo.png',
       shot: '<div class="shot__site">' +
         '<div class="shot__search"><i class="shot__searchicon"></i><i class="shot__searchline"></i></div>' +
         '<div class="shot__results">' +
@@ -549,7 +549,7 @@
       features: ['Brand-trained responses', '24/7 availability', 'Seamless human handoff', 'Conversation analytics', 'Retraining on your latest docs'],
       tech: ['RAG', 'Live chat', 'WhatsApp', 'Web'],
       url: 'sandbox.studio/chat',
-      photo: 'assets/img/screens/image copy.png',
+      photo: '../ASSETS/img/screens/image copy.png',
       shot: '<div class="shot__site">' +
         '<div class="shot__nav"><i class="shot__logo"></i><i class="shot__navlink" style="width:26px"></i><i class="shot__navlink" style="width:20px"></i></div>' +
         '<div class="shot__hero"><i class="shot__line shot__line--dark"></i><i class="shot__line shot__line--short"></i><i class="shot__line" style="width:70%"></i><i class="shot__line" style="width:52%"></i></div>' +
@@ -572,7 +572,7 @@
       features: ['Multi-step agent workflows', 'CRM / inbox / calendar glue', 'Scheduled intelligence runs', 'Human-in-the-loop checkpoints', 'Cost & usage dashboards'],
       tech: ['AI Agents', 'n8n', 'Zapier', 'APIs'],
       url: 'sandbox.studio/automation',
-      photo: 'assets/img/screens/image copy 2.png',
+      photo: '../ASSETS/img/screens/image copy 2.png',
       shot: '<div class="shot__site">' +
         '<div class="shot__nav"><i class="shot__logo"></i></div>' +
         '<div class="shot__flow">' +
@@ -592,7 +592,7 @@
       features: ['Custom storefronts', 'Headless Shopify / WooCommerce', 'Payments, tax & shipping setup', 'Abandoned-cart recovery', 'Conversion tracking & A/B ready'],
       tech: ['Shopify', 'WooCommerce', 'Stripe', 'Next.js'],
       url: 'sandbox.studio/shop',
-      photo: 'assets/img/screens/image copy 3.png',
+      photo: '../ASSETS/img/screens/image copy 3.png',
       shot: '<div class="shot__site">' +
         '<div class="shot__nav"><i class="shot__logo"></i><i class="shot__navlink" style="width:24px"></i><i class="shot__navlink" style="width:18px"></i></div>' +
         '<div class="shot__products">' +
@@ -613,7 +613,7 @@
       features: ['Uptime monitoring & alerts', 'Security patches & backups', 'Performance reviews', 'Priority response', 'Monthly improvement sprint'],
       tech: ['Sentry', 'GitHub Actions', 'Uptime Robot', 'Cloud'],
       url: 'sandbox.studio/care',
-      photo: 'assets/img/screens/image copy 4.png',
+      photo: '../ASSETS/img/screens/image copy 4.png',
       shot: '<div class="shot__site">' +
         '<div class="shot__nav"><i class="shot__logo"></i></div>' +
         '<div class="shot__dash">' +
@@ -884,7 +884,7 @@
 
   var steps = [
     {
-      num: '01', title: 'Client Inquiry', phase: 0, driver: 'client', img: 'images/01-inquiry.jpg',
+      num: '01', title: 'Client Inquiry', phase: 0, driver: 'client', img: '../IMAGES/01-inquiry.jpg',
       blurb: 'Tell us what you want to build — your idea, requirement, or business need.',
       detail: 'Every project starts with a hello. Share your idea, requirement, or business need — even a rough sketch is enough to begin.',
       client: ['Share your idea or requirement', 'Tell us the goal behind it'],
@@ -892,7 +892,7 @@
       outcome: 'Your idea is on our desk'
     },
     {
-      num: '02', title: 'Discovery & Consultation', phase: 1, driver: 'both', img: 'images/02-discovery.jpg',
+      num: '02', title: 'Discovery & Consultation', phase: 1, driver: 'both', img: '../IMAGES/02-discovery.jpg',
       blurb: 'We get to know your business, goals, and audience.',
       detail: 'We connect on a call, in person, or however suits you — to understand your business, goals, audience, challenges, and what success looks like.',
       client: ['Walk us through your business', 'Share goals and challenges'],
@@ -900,7 +900,7 @@
       outcome: 'A clear picture of the project'
     },
     {
-      num: '03', title: 'Requirement Analysis', phase: 1, driver: 'studio', img: 'images/03-proposal.jpg',
+      num: '03', title: 'Requirement Analysis', phase: 1, driver: 'studio', img: '../IMAGES/03-proposal.jpg',
       blurb: 'Your needs become a clear, documented scope.',
       detail: 'We convert everything from discovery into clear functional and technical requirements — so nothing is lost in translation.',
       client: ['Provide business requirements', 'Confirm priorities and must-haves'],
@@ -908,7 +908,7 @@
       outcome: 'A documented requirement baseline'
     },
     {
-      num: '04', title: 'Proposal & Quotation', phase: 1, driver: 'studio', img: 'images/04-agreement.jpg',
+      num: '04', title: 'Proposal & Quotation', phase: 1, driver: 'studio', img: '../IMAGES/04-agreement.jpg',
       blurb: 'A tailored scope, timeline, and transparent pricing.',
       detail: 'We prepare a custom proposal — project scope, features, estimated timeline, technology, and cost. You review it and approve.',
       client: ['Review the proposal', 'Approve scope and budget'],
@@ -916,7 +916,7 @@
       outcome: 'Scope and pricing, agreed'
     },
     {
-      num: '05', title: 'Strategy & Planning', phase: 2, driver: 'both', img: 'images/05-design.jpg',
+      num: '05', title: 'Strategy & Planning', phase: 2, driver: 'both', img: '../IMAGES/05-design.jpg',
       blurb: 'We map the roadmap, architecture, and milestones.',
       detail: 'Before pixels or code, we plan the build — technical architecture, roadmap, content structure, and milestones — so everyone knows the route.',
       client: ['Confirm priorities and deadlines', 'Provide content and assets'],
@@ -924,7 +924,7 @@
       outcome: 'A build-ready plan'
     },
     {
-      num: '06', title: 'UI/UX Design', phase: 2, driver: 'both', img: 'images/06-payment.jpg',
+      num: '06', title: 'UI/UX Design', phase: 2, driver: 'both', img: '../IMAGES/06-payment.jpg',
       blurb: 'We design how it looks and behaves — before we build.',
       detail: 'Wireframes, user flows, and visual concepts. You review the showcase and we refine until it is approved.',
       client: ['Review the design showcase', 'Share feedback'],
@@ -932,7 +932,7 @@
       outcome: 'An approved visual blueprint'
     },
     {
-      num: '07', title: 'Development', phase: 3, driver: 'studio', img: 'images/07-development.jpg',
+      num: '07', title: 'Development', phase: 3, driver: 'studio', img: '../IMAGES/07-development.jpg',
       blurb: 'We build the actual product, clean and to spec.',
       detail: 'Frontend and backend, database, APIs, integrations, and AI — built against the approved scope and design.',
       client: ['Provide access and inputs as needed', 'Review progress milestones'],
@@ -940,7 +940,7 @@
       outcome: 'The product built to spec'
     },
     {
-      num: '08', title: 'Testing & Refinement', phase: 3, driver: 'both', img: 'images/08-qa.jpg',
+      num: '08', title: 'Testing & Refinement', phase: 3, driver: 'both', img: '../IMAGES/08-qa.jpg',
       blurb: 'Thorough testing before you ever see it.',
       detail: 'We test functionality, responsiveness, performance, and compatibility — then polish until it is stable and ready for your review.',
       client: ['Run user-acceptance checks', 'Report any issues'],
@@ -948,7 +948,7 @@
       outcome: 'A stable version for review'
     },
     {
-      num: '09', title: 'Deployment', phase: 4, driver: 'studio', img: 'images/09-review.jpg',
+      num: '09', title: 'Deployment', phase: 4, driver: 'studio', img: '../IMAGES/09-review.jpg',
       blurb: 'Your product goes live.',
       detail: 'We deploy to the agreed production environment and complete the launch configuration — so it is truly ready for the world.',
       client: ['Confirm go-live date and scope'],
@@ -956,7 +956,7 @@
       outcome: 'Your site or app goes live'
     },
     {
-      num: '10', title: 'Domain & Hosting', phase: 4, driver: 'studio', img: 'images/10-launch.jpg',
+      num: '10', title: 'Domain & Hosting', phase: 4, driver: 'studio', img: '../IMAGES/10-launch.jpg',
       blurb: 'Your domain, hosting, and security are set up right.',
       detail: 'We configure your domain, hosting environment, SSL, and backups — the quiet infrastructure that keeps you online.',
       client: ['Provide domain and account access'],
@@ -964,7 +964,7 @@
       outcome: 'A secure, always-on home'
     },
     {
-      num: '11', title: 'SEO & Analytics', phase: 4, driver: 'studio', img: 'images/11-handover.jpg',
+      num: '11', title: 'SEO & Analytics', phase: 4, driver: 'studio', img: '../IMAGES/11-handover.jpg',
       blurb: 'Search setup and measurement from day one.',
       detail: 'Technical SEO, Search Console, sitemaps, and analytics — so you are findable and can see what works from launch.',
       client: ['Verify analytics access'],
@@ -972,7 +972,7 @@
       outcome: 'Findable and measurable'
     },
     {
-      num: '12', title: 'Handover', phase: 4, driver: 'both', img: 'images/12-closure.jpg',
+      num: '12', title: 'Handover', phase: 4, driver: 'both', img: '../IMAGES/12-closure.jpg',
       blurb: 'The project — and its keys — are handed to you.',
       detail: 'We hand over the completed project with all agreed assets, access, and documentation — plus a walkthrough so you feel confident.',
       client: ['Receive access and credentials', 'Walk through the product'],
@@ -980,7 +980,7 @@
       outcome: 'Delivered to the client'
     },
     {
-      num: '13', title: 'Maintenance & Growth', phase: 5, driver: 'both', img: 'images/13-growth.jpg',
+      num: '13', title: 'Maintenance & Growth', phase: 5, driver: 'both', img: '../IMAGES/13-growth.jpg',
       blurb: 'The product keeps improving — on your terms, optionally.',
       detail: 'Your relationship does not have to end at launch. We can keep supporting and improving your digital product through separate, ongoing services.',
       client: ['Choose services and priorities'],
@@ -1186,11 +1186,12 @@
     render();
   }
 
-  /* ---------- navigation ---------- */
+  /* ---------- navigation · scroll to the step (native horizontal scroll) ---------- */
   function goTo(i) {
     i = clamp(i, 0, N - 1);
     if (isMobile.matches) return;
-    cards.style.transform = 'translateX(' + (-i * 100) + '%)';
+    var w = deck.clientWidth || 1;
+    deck.scrollTo({ left: i * w, behavior: reduced ? 'auto' : 'smooth' });
     setStep(i);
   }
 
@@ -1208,56 +1209,18 @@
     }
   });
 
-  /* one card per swipe / drag — no free scroll */
-  var dragging = false;
-  var startX = 0;
-  var startY = 0;
-  var dragActive = false;
-
-  function endDrag(dx) {
-    dragging = false;
-    dragActive = false;
-    cards.style.transition = '';
-    var w = deck.clientWidth || 1;
-    if (dx !== null && Math.abs(dx) > Math.min(56, w * 0.18)) {
-      goTo(curStep + (dx < 0 ? 1 : -1));
-    } else {
-      goTo(curStep);
-    }
-  }
-
-  deck.addEventListener('pointerdown', function (e) {
-    if (isMobile.matches) return;
-    if (e.target.closest('button, a')) return;
-    dragging = true;
-    dragActive = false;
-    startX = e.clientX;
-    startY = e.clientY;
-    cards.style.transition = 'none';
-    try { deck.setPointerCapture(e.pointerId); } catch (err) {}
-  });
-
-  deck.addEventListener('pointermove', function (e) {
-    if (!dragging) return;
-    var dx = e.clientX - startX;
-    var dy = e.clientY - startY;
-    if (!dragActive) {
-      if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
-      if (Math.abs(dx) <= Math.abs(dy)) return;
-      dragActive = true;
-    }
-    cards.style.transform = 'translateX(calc(' + (-curStep * 100) + '% + ' + dx + 'px))';
-  });
-
-  deck.addEventListener('pointerup', function (e) {
-    if (!dragging) return;
-    endDrag(e.clientX - startX);
-  });
-
-  deck.addEventListener('pointercancel', function () {
-    if (!dragging) return;
-    endDrag(null);
-  });
+  /* native scroll keeps the rail timeline in sync */
+  var dTick = false;
+  deck.addEventListener('scroll', function () {
+    if (dTick) return;
+    dTick = true;
+    window.requestAnimationFrame(function () {
+      dTick = false;
+      var w = deck.clientWidth || 1;
+      var i = Math.min(N - 1, Math.max(0, Math.round(deck.scrollLeft / w)));
+      if (i !== curStep) setStep(i);
+    });
+  }, { passive: true });
 
 
   /* ---------- mobile carousel ---------- */
@@ -1324,7 +1287,7 @@
       ticking = false;
       measure();
       if (isMobile.matches) renderMobile(mobileIndex());
-      else setStep(curStep);
+      else { deck.scrollLeft = curStep * (deck.clientWidth || 1); setStep(curStep); }
     });
   }, { passive: true });
 })();

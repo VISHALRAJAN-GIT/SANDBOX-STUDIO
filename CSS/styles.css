@@ -267,9 +267,14 @@ button, input, select, textarea { font: inherit; color: inherit; }
   inset: 0;
   width: 100%;
   height: 100%;
+  will-change: clip-path, opacity, transform;
+}
+.transformation__img > img {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
-  will-change: clip-path, opacity, transform;
 }
 .transformation__before { z-index: 1; }
 .transformation__after {
@@ -332,6 +337,13 @@ button, input, select, textarea { font: inherit; color: inherit; }
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   pointer-events: none;
+}
+@media (max-width: 40rem) {
+  .hero-tag {
+    white-space: normal;
+    max-width: calc(100vw - 2rem);
+    line-height: 1.5;
+  }
 }
 
 /* ---------- products · 3D carousel ---------- */
@@ -1817,27 +1829,38 @@ button, input, select, textarea { font: inherit; color: inherit; }
   100% { opacity: 0; }
 }
 
-/* ---------- deck · carousel — one card at a time (transform, no free scroll) ---------- */
+/* ---------- deck · horizontal scroll — native sideways scroll, one card per snap ---------- */
 .journey__deck {
   position: relative;
   max-width: 78rem;
   margin-inline: auto;
   margin-top: var(--space-lg);
   height: clamp(40rem, 80vh, 54rem);
-  overflow: hidden;
-  touch-action: pan-y;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-rule-2) transparent;
   outline: none;
+}
+.journey__deck::-webkit-scrollbar { height: 10px; }
+.journey__deck::-webkit-scrollbar-track { background: transparent; }
+.journey__deck::-webkit-scrollbar-thumb {
+  background: var(--color-rule-2);
+  border-radius: 999px;
+  border: 2px solid var(--color-paper);
 }
 .journey__cards {
   display: flex;
   align-items: stretch;
   height: 100%;
-  will-change: transform;
-  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .journey__slide {
   flex: 0 0 100%;
   min-width: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
   display: grid;
   grid-template-columns: 1fr 1.15fr;
   gap: var(--space-lg);

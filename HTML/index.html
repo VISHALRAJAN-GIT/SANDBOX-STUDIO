@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://images.pexels.com" crossorigin />
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="../CSS/styles.css" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -134,8 +134,14 @@
     <section class="home" id="home" aria-labelledby="homeTitle">
       <h1 class="sr-only" id="homeTitle">Transform Your Digital Operations with Custom Web Development &amp; Automation in Chennai</h1>
       <div class="transformation" id="heroTransformation" aria-hidden="true">
-        <img class="transformation__img transformation__before" src="assets/images/hero/before.png" alt="" />
-        <img class="transformation__img transformation__after" src="assets/images/hero/after.png" alt="" />
+        <picture class="transformation__img transformation__before">
+          <source media="(max-width: 60rem) and (orientation: portrait)" srcset="../ASSETS/MOBILE/BEFORE.png" />
+          <img src="../ASSETS/images/hero/before.png" alt="" />
+        </picture>
+        <picture class="transformation__img transformation__after">
+          <source media="(max-width: 60rem) and (orientation: portrait)" srcset="../ASSETS/MOBILE/AFTER.png" />
+          <img src="../ASSETS/images/hero/after.png" alt="" />
+        </picture>
         <div class="transformation__line" id="heroLine"></div>
         <div class="transformation__sand" id="heroSand"></div>
       </div>
@@ -176,11 +182,11 @@
       <nav class="services-index" aria-label="Service pages">
         <p class="services-index__label">Explore each service in depth</p>
         <ul class="services-index__list">
-          <li><a href="services/web-development/">Custom Website Development <span aria-hidden="true">â†’</span></a></li>
-          <li><a href="services/business-automations/">Business Automations <span aria-hidden="true">â†’</span></a></li>
-          <li><a href="services/ecommerce-development/">eCommerce Development <span aria-hidden="true">â†’</span></a></li>
-          <li><a href="services/seo-services/">SEO Services <span aria-hidden="true">â†’</span></a></li>
-          <li><a href="services/website-maintenance/">Website Maintenance <span aria-hidden="true">â†’</span></a></li>
+          <li><a href="../SERVICES/web-development/">Custom Website Development <span aria-hidden="true">â†’</span></a></li>
+          <li><a href="../SERVICES/business-automations/">Business Automations <span aria-hidden="true">â†’</span></a></li>
+          <li><a href="../SERVICES/ecommerce-development/">eCommerce Development <span aria-hidden="true">â†’</span></a></li>
+          <li><a href="../SERVICES/seo-services/">SEO Services <span aria-hidden="true">â†’</span></a></li>
+          <li><a href="../SERVICES/website-maintenance/">Website Maintenance <span aria-hidden="true">â†’</span></a></li>
         </ul>
       </nav>
     </section>
@@ -201,7 +207,7 @@
           <ol class="journey__nodes" id="journeyNodes"></ol>
           <svg class="journey__line" id="journeyLine" aria-hidden="true" focusable="false"></svg>
           <div class="journey__pilot" id="journeyPilot" aria-hidden="true">
-            <img class="journey__pilot-avatar" src="images/client-avatar.jpg" alt="" draggable="false" />
+            <img class="journey__pilot-avatar" src="../IMAGES/client-avatar.jpg" alt="" draggable="false" />
           </div>
         </div>
 
@@ -241,7 +247,7 @@
               <span class="cta__contact-label">Email</span>
               <span class="cta__contact-value">sandbox.studio.in@gmail.com</span>
             </a>
-            <a class="cta__contact" href="services/web-development/">
+            <a class="cta__contact" href="../SERVICES/web-development/">
               <span class="cta__contact-label">Prefer a quick estimate?</span>
               <span class="cta__contact-value">Use the free project cost estimator â†’</span>
             </a>
@@ -293,11 +299,11 @@
       <div>
         <h3>Services</h3>
         <ul>
-          <li><a href="services/web-development/">Custom Website Development</a></li>
-          <li><a href="services/business-automations/">Business Automations</a></li>
-          <li><a href="services/ecommerce-development/">eCommerce Development</a></li>
-          <li><a href="services/seo-services/">SEO Services</a></li>
-          <li><a href="services/website-maintenance/">Website Maintenance</a></li>
+          <li><a href="../SERVICES/web-development/">Custom Website Development</a></li>
+          <li><a href="../SERVICES/business-automations/">Business Automations</a></li>
+          <li><a href="../SERVICES/ecommerce-development/">eCommerce Development</a></li>
+          <li><a href="../SERVICES/seo-services/">SEO Services</a></li>
+          <li><a href="../SERVICES/website-maintenance/">Website Maintenance</a></li>
         </ul>
       </div>
       <div>
@@ -365,6 +371,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
-  <script src="js/script.js"></script>
+  <script src="../JS/script.js"></script>
 </body>
 </html>
