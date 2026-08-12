@@ -989,8 +989,12 @@ button, input, select, textarea { font: inherit; color: inherit; }
   transform-origin: 50% 0% 0;
   transition: transform 0.95s var(--ease-in-out);
 }
-.scard:hover .scard__front,
 .scard.is-open .scard__front { transform: rotateX(97deg); }
+
+/* only devices with a real cursor fold on hover — touch keeps :hover active after a tap, which stops cards from closing */
+@media (hover: hover) and (pointer: fine) {
+  .scard:hover .scard__front { transform: rotateX(97deg); }
+}
 
 /* reduced motion · the fold degrades to a clean fade */
 @media (prefers-reduced-motion: reduce) {
@@ -1000,10 +1004,12 @@ button, input, select, textarea { font: inherit; color: inherit; }
     transition: opacity 0.3s ease !important;
     transform: none !important;
   }
-  .scard:hover .scard__front,
   .scard.is-open .scard__front { opacity: 0; }
-  .scard:hover .scard__back,
   .scard.is-open .scard__back { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) and (hover: hover) and (pointer: fine) {
+  .scard:hover .scard__front { opacity: 0; }
+  .scard:hover .scard__back { opacity: 1; }
 }
 
 /* ---------- service motifs · live demonstrations ---------- */
