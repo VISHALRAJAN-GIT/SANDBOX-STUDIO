@@ -3,13 +3,25 @@
   publish = "."
   command = ""
 
+# sitemap.xml / robots.txt — short cache so search engines pick up changes quickly
 [[headers]]
-  for = "/ok_leave_it_i_need_a_new_vedio_processed.mp4"
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# Hero before/after images — stable filenames, cache aggressively (each deploy purges it)
+[[headers]]
+  for = "/sandbox*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Entrance video — short cache so it propagates quickly if you swap the file
+# Homepage — preload both hero images so first paint is faster
 [[headers]]
-  for = "/OK_SEPERATE_THE_FIRST_SEC_FR_processed_processed.mp4"
+  for = "/"
   [headers.values]
-    Cache-Control = "public, max-age=3600"
+    Link = "</sandboxhero%20before.png>; rel=preload; as=image, </sandbox%20hero%20after.png>; rel=preload; as=image; fetchpriority=high"

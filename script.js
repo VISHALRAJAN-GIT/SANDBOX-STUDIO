@@ -501,6 +501,7 @@
       num: '01', motif: 'web', name: 'Web Applications',
       tag: 'Fast by default',
       desc: 'High-performance sites and web apps built for speed and conversions.',
+      alt: 'Custom website development project built by Sandbox Studio for a Chennai business',
       problem: 'A slow, template-looking website erodes trust and costs you sales before a visitor even reads your offer.',
       solution: 'We ship responsive, accessible builds with clean architecture, fast loads, and a conversion path designed into every page.',
       features: ['Core Web Vitals tuned', 'Responsive & accessible', 'Headless-ready stacks', 'Conversion-focused build', 'Ongoing performance budget'],
@@ -518,6 +519,7 @@
       num: '02', motif: 'seo', name: 'SEO',
       tag: 'Found on Google',
       desc: 'Search-first strategy, technical fixes, and content that earns rankings and clicks.',
+      alt: 'Technical SEO audit dashboard for a client website in Chennai',
       problem: 'A brilliant website is useless if nobody finds it. Poor structure, slow pages, and thin content keep you buried on page three.',
       solution: 'We audit, fix, and build — technical SEO, keyword-led content, and authority signals that compound month after month.',
       features: ['Technical SEO audits', 'Keyword & intent research', 'On-page optimization', 'Local SEO & Google Business', 'Monthly ranking reports'],
@@ -541,6 +543,7 @@
       num: '03', motif: 'chat', name: 'AI Chatbots',
       tag: 'Always-on support',
       desc: 'Support agents trained on your product and brand — resolving most tickets before a human sees them.',
+      alt: 'Brand-trained AI chatbot interface designed by Sandbox Studio in Chennai',
       problem: 'Support queues grow while questions repeat. Off-the-shelf bots give scripted answers that frustrate customers.',
       solution: 'We build chatbots grounded in your docs, history, and pricing — resolving most tickets instantly and escalating gracefully.',
       features: ['Brand-trained responses', '24/7 availability', 'Seamless human handoff', 'Conversation analytics', 'Retraining on your latest docs'],
@@ -563,6 +566,7 @@
       num: '04', motif: 'auto', name: 'AI Automation',
       tag: 'Workflow engine',
       desc: 'Repetitive operations that run themselves — from inbox to CRM to reports.',
+      alt: 'Business automation workflow dashboard designed by Sandbox Studio',
       problem: 'Your team burns hours on repetitive work: data entry, follow-ups, triage, reporting. It scales poorly and errors creep in.',
       solution: 'We connect your tools into self-running workflows where an AI layer makes decisions and hands off only what needs a human.',
       features: ['Multi-step agent workflows', 'CRM / inbox / calendar glue', 'Scheduled intelligence runs', 'Human-in-the-loop checkpoints', 'Cost & usage dashboards'],
@@ -582,6 +586,7 @@
       num: '05', motif: 'shop', name: 'E-commerce',
       tag: 'Stores that sell',
       desc: 'Conversion-focused storefronts with a checkout that feels effortless.',
+      alt: 'High-converting eCommerce storefront developed by Sandbox Studio',
       problem: 'Confusing navigation and slow checkout quietly kill sales — most carts are abandoned before purchase.',
       solution: 'We build fast, brand-true storefronts with streamlined checkout, smart search, and recovery flows that bring shoppers back.',
       features: ['Custom storefronts', 'Headless Shopify / WooCommerce', 'Payments, tax & shipping setup', 'Abandoned-cart recovery', 'Conversion tracking & A/B ready'],
@@ -602,6 +607,7 @@
       num: '06', motif: 'care', name: 'Support & Maintenance',
       tag: 'Long-term care',
       desc: 'Sites and apps that stay fast, safe, and current — without babysitting.',
+      alt: 'Website uptime monitoring and maintenance dashboard from Sandbox Studio',
       problem: 'Software rots. Outdated dependencies, silent downtime, and creeping issues turn your product into a liability.',
       solution: 'We run proactive care plans — monitoring, updates, backups, and a human on call when it matters most.',
       features: ['Uptime monitoring & alerts', 'Security patches & backups', 'Performance reviews', 'Priority response', 'Monthly improvement sprint'],
@@ -702,11 +708,11 @@
       front +=
         '<span class="scard__num">' + item.num + '</span>' +
         '<span class="scard__hint" aria-hidden="true">open</span>' +
-        '<span class="scard__title"><span class="scard__name">' + item.name + '</span><span class="scard__tag">' + item.tag + '</span></span>';
+        '<h3 class="scard__title"><span class="scard__name">' + item.name + '</span><span class="scard__tag">' + item.tag + '</span></h3>';
 
       var back =
         '<span class="scard__tag">' + item.tag + '</span>' +
-        '<span class="scard__name">' + item.name + '</span>' +
+        '<h3 class="scard__name">' + item.name + '</h3>' +
         '<p class="scard__specs-label">What you get</p>' +
         '<ul class="scard__specs">' + item.features.map(function (f) { return '<li>' + f + '</li>'; }).join('') + '</ul>' +
         '<button class="scard__notes" type="button">Lab notes <span aria-hidden="true">↗</span></button>';
@@ -1321,4 +1327,49 @@
       else setStep(curStep);
     });
   }, { passive: true });
+})();
+
+/* ---------- contact form · Netlify Forms submission ---------- */
+(function () {
+  'use strict';
+
+  var form = document.getElementById('contactForm');
+  var status = document.getElementById('cfStatus');
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var data = new FormData(form);
+    var name = String(data.get('name') || '').trim();
+    var email = String(data.get('email') || '').trim();
+    var phone = String(data.get('phone') || '').trim();
+    var message = String(data.get('message') || '').trim();
+    if (!name || !email || !message) {
+      if (status) status.textContent = 'Please fill in your name, email, and project details.';
+      return;
+    }
+    if (phone && !/^[+0-9()\-\s.]{7,15}$/.test(phone)) {
+      if (status) status.textContent = 'Please add a valid phone number (digits only, 7–15 characters).';
+      return;
+    }
+    if (status) status.textContent = 'Sending…';
+    var btn = form.querySelector('button[type="submit"]');
+    if (btn) btn.disabled = true;
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: data
+    }).then(function (res) {
+      if (status) {
+        status.textContent = res.ok
+          ? 'Thanks ' + name + ' — your message is on its way. We reply within one working day.'
+          : 'Something went wrong — please email sandbox.studio.in@gmail.com or call +91 73055 68806.';
+      }
+      if (res.ok) form.reset();
+    }).catch(function () {
+      if (status) status.textContent = 'Network error — please email sandbox.studio.in@gmail.com or call +91 73055 68806.';
+    }).then(function () {
+      if (btn) btn.disabled = false;
+    });
+  });
 })();

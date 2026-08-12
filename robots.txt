@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /frames/
+
+Sitemap: https://sandboxstudio.co.in/sitemap.xml

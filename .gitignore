@@ -1,5 +1,6 @@
 # Tooling / editor
 .frolic-session.json
+.frolic-backup-*.json
 .DS_Store
 Thumbs.db
 *.log
