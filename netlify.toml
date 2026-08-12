@@ -1,4 +1,4 @@
-# Netlify — static site, no build step
+﻿# Netlify — static site, no build step
 [build]
   publish = "."
   command = ""
@@ -16,7 +16,7 @@
 
 # Hero before/after images — stable filenames, cache aggressively (each deploy purges it)
 [[headers]]
-  for = "/sandbox*"
+  for = "/assets/images/hero/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
@@ -24,4 +24,4 @@
 [[headers]]
   for = "/"
   [headers.values]
-    Link = "</sandboxhero%20before.png>; rel=preload; as=image, </sandbox%20hero%20after.png>; rel=preload; as=image; fetchpriority=high"
+    Link = "</assets/images/hero/before.png>; rel=preload; as=image, </assets/images/hero/after.png>; rel=preload; as=image; fetchpriority=high"

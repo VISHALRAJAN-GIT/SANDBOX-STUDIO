@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-IN">
 <head>
   <meta charset="UTF-8" />
@@ -55,7 +55,7 @@
 
   <nav class="nav" id="nav" aria-label="Primary">
     <div class="nav__pill">
-      <a class="nav__brand" href="../../index.html" aria-label="Sandbox Studio — home">
+      <a class="nav__brand" href="../../index.html" aria-label="Sandbox Studio â€” home">
         <span class="nav__dot" aria-hidden="true"></span>sandbox<span class="nav__brand-end">.</span>
       </a>
       <ul class="nav__links" id="navLinks">
@@ -74,17 +74,17 @@
 
   <main id="main">
     <section class="service-hero" aria-labelledby="pageTitle">
-      <p class="section__label">Services · Business Automations</p>
+      <p class="section__label">Services Â· Business Automations</p>
       <h1 class="service-hero__title" id="pageTitle">Enterprise Business Automation Solutions</h1>
-      <p class="service-hero__sub">We connect your tools into self-running workflows — inbox, CRM, calendar, and reports — where an automation layer makes the decisions only a human used to make.</p>
+      <p class="service-hero__sub">We connect your tools into self-running workflows â€” inbox, CRM, calendar, and reports â€” where an automation layer makes the decisions only a human used to make.</p>
     </section>
 
     <section class="service-body">
       <h2>Eliminate Manual Bottlenecks, Not Jobs</h2>
-      <p>Data entry, lead triage, follow-ups, invoicing, reporting — most teams in Chennai lose hours every week to repetitive work that a machine can do faster and without typos. We build workflow automation that hands your people back their time and keeps a human checkpoint wherever one matters.</p>
+      <p>Data entry, lead triage, follow-ups, invoicing, reporting â€” most teams in Chennai lose hours every week to repetitive work that a machine can do faster and without typos. We build workflow automation that hands your people back their time and keeps a human checkpoint wherever one matters.</p>
 
       <h3>Workflow Automation</h3>
-      <p>From a lead landing in your inbox to a proposal going out, multi-step agent workflows route, enrich, and act on data across your existing tools — scheduled, logged, and dashboarded.</p>
+      <p>From a lead landing in your inbox to a proposal going out, multi-step agent workflows route, enrich, and act on data across your existing tools â€” scheduled, logged, and dashboarded.</p>
 
       <h3>CRM &amp; ERP Integration</h3>
       <p>Bespoke CRM integrations that keep your sales pipeline, tickets, and accounts in one place. No more copy-pasting between Zoho, HubSpot, or your own sheets.</p>
@@ -96,7 +96,7 @@
       <div class="service-grid">
         <div class="service-card">
           <h3>Lead to invoice</h3>
-          <p>Inquiry lands, gets triaged, scheduled, followed up, and converted into an invoice — before your team has had coffee.</p>
+          <p>Inquiry lands, gets triaged, scheduled, followed up, and converted into an invoice â€” before your team has had coffee.</p>
         </div>
         <div class="service-card">
           <h3>Support triage</h3>
@@ -113,7 +113,7 @@
       </div>
 
       <h2 id="audit">Book a Free Technical Audit</h2>
-      <p>We review two things: how your team currently spends its time, and where your tools leak data. You get a shortlist of automations ranked by hours saved — free.</p>
+      <p>We review two things: how your team currently spends its time, and where your tools leak data. You get a shortlist of automations ranked by hours saved â€” free.</p>
       <div class="cta" style="background:var(--color-paper-2);color:var(--color-ink)">
         <div class="cta__inner" style="padding:var(--space-xl) clamp(1rem,4vw,1.5rem)">
           <form class="cta__form" id="serviceForm" name="audit" data-netlify="true" novalidate>
@@ -150,7 +150,7 @@
       <div class="service-cta__inner">
         <div>
           <h2 class="service-cta__title">Talk to an automation engineer</h2>
-          <p class="service-cta__sub">Share your stack and we&rsquo;ll tell you honestly what can be automated this month — and what should stay manual.</p>
+          <p class="service-cta__sub">Share your stack and we&rsquo;ll tell you honestly what can be automated this month â€” and what should stay manual.</p>
         </div>
         <div class="service-cta__links">
           <a class="service-cta__link" href="tel:+917305568806">
@@ -163,7 +163,7 @@
           </a>
           <a class="service-cta__link" href="../../blog.html#post-automation">
             <span class="service-cta__link-label">Related reading</span>
-            <span class="service-cta__link-value">From lead to invoice: automating the back office →</span>
+            <span class="service-cta__link-value">From lead to invoice: automating the back office â†’</span>
           </a>
         </div>
       </div>
@@ -207,7 +207,7 @@
       </div>
     </div>
     <div class="site-footer__bottom">
-      <span>© 2026 Sandbox Web Studio. All rights reserved.</span>
+      <span>Â© 2026 Sandbox Web Studio. All rights reserved.</span>
       <span>Business Automation Services in Chennai</span>
     </div>
   </footer>
@@ -245,10 +245,10 @@
             return;
           }
           if (phone && !/^[+0-9()\-\s.]{7,15}$/.test(phone)) {
-            if (status) status.textContent = 'Please add a valid phone number (digits only, 7–15 characters).';
+            if (status) status.textContent = 'Please add a valid phone number (digits only, 7â€“15 characters).';
             return;
           }
-          if (status) status.textContent = 'Sending…';
+          if (status) status.textContent = 'Sendingâ€¦';
           var btn = form.querySelector('button[type="submit"]');
           if (btn) btn.disabled = true;
           fetch('/', {
@@ -258,12 +258,12 @@
           }).then(function (res) {
             if (status) {
               status.textContent = res.ok
-                ? 'Thanks ' + name + ' — your audit request is on its way. We reply within one working day.'
-                : 'Something went wrong — please email sandbox.studio.in@gmail.com or call +91 73055 68806.';
+                ? 'Thanks ' + name + ' â€” your audit request is on its way. We reply within one working day.'
+                : 'Something went wrong â€” please email sandbox.studio.in@gmail.com or call +91 73055 68806.';
             }
             if (res.ok) form.reset();
           }).catch(function () {
-            if (status) status.textContent = 'Network error — please email sandbox.studio.in@gmail.com or call +91 73055 68806.';
+            if (status) status.textContent = 'Network error â€” please email sandbox.studio.in@gmail.com or call +91 73055 68806.';
           }).then(function () {
             if (btn) btn.disabled = false;
           });

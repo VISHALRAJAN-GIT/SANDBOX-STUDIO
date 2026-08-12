@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-IN">
 <head>
   <meta charset="UTF-8" />
@@ -55,7 +55,7 @@
 
   <nav class="nav" id="nav" aria-label="Primary">
     <div class="nav__pill">
-      <a class="nav__brand" href="../../index.html" aria-label="Sandbox Studio — home">
+      <a class="nav__brand" href="../../index.html" aria-label="Sandbox Studio â€” home">
         <span class="nav__dot" aria-hidden="true"></span>sandbox<span class="nav__brand-end">.</span>
       </a>
       <ul class="nav__links" id="navLinks">
@@ -74,24 +74,24 @@
 
   <main id="main">
     <section class="service-hero" aria-labelledby="pageTitle">
-      <p class="section__label">Services · Web Development</p>
+      <p class="section__label">Services Â· Web Development</p>
       <h1 class="service-hero__title" id="pageTitle">Custom Website Development Services in Chennai</h1>
-      <p class="service-hero__sub">We design and build tailor-made, high-speed, responsive websites engineered for conversion — not template boxes you inherit and fight to change.</p>
+      <p class="service-hero__sub">We design and build tailor-made, high-speed, responsive websites engineered for conversion â€” not template boxes you inherit and fight to change.</p>
     </section>
 
     <section class="service-body">
       <h2>Bespoke Web Development That Outperforms Templates</h2>
       <p>Off-the-shelf templates look alike, load slowly, and bend your brand to fit their grid. A custom build does the opposite: every section, interaction, and page is designed around how your Chennai customers actually buy, enquire, and book.</p>
-      <p>From marketing websites and corporate portals to data-heavy web applications, we own the whole build — structure, design, performance, and the conversion path in between.</p>
+      <p>From marketing websites and corporate portals to data-heavy web applications, we own the whole build â€” structure, design, performance, and the conversion path in between.</p>
 
       <h3>Responsive Website Design</h3>
-      <p>Mobile-first layouts that look deliberate on every screen, from a 5-inch phone to a 27-inch monitor. More than half of your visitors in Tamil Nadu will arrive on mobile — the design ships for them first.</p>
+      <p>Mobile-first layouts that look deliberate on every screen, from a 5-inch phone to a 27-inch monitor. More than half of your visitors in Tamil Nadu will arrive on mobile â€” the design ships for them first.</p>
 
       <h3>High-Performance, SEO-Ready Builds</h3>
       <p>Every project ships with clean semantic markup, fast loading images, and Core Web Vitals as a build requirement, not an afterthought. The site Google is fastest to index is the site that also converts.</p>
 
       <h3>Headless &amp; Custom Tech Stacks</h3>
-      <p>Static first, and where you need it — React, headless CMS, Vercel edge hosting. We choose the stack that keeps your hosting bill low and your load times under two seconds.</p>
+      <p>Static first, and where you need it â€” React, headless CMS, Vercel edge hosting. We choose the stack that keeps your hosting bill low and your load times under two seconds.</p>
 
       <h2>What&rsquo;s Included in Every Build</h2>
       <div class="service-grid">
@@ -105,7 +105,7 @@
         </div>
         <div class="service-card">
           <h3>Accessible &amp; semantic</h3>
-          <p>Proper headings, landmarks, and keyboard paths — for users and for search engines.</p>
+          <p>Proper headings, landmarks, and keyboard paths â€” for users and for search engines.</p>
         </div>
         <div class="service-card">
           <h3>Built to be edited</h3>
@@ -122,7 +122,7 @@
       </ul>
 
       <h2 id="quote">Get a Free Project Cost Estimator</h2>
-      <p>Tell us about your website and we&rsquo;ll reply within one working day with a rough scope, timeline, and honest estimate — no obligation.</p>
+      <p>Tell us about your website and we&rsquo;ll reply within one working day with a rough scope, timeline, and honest estimate â€” no obligation.</p>
       <div class="cta" style="background:var(--color-paper-2);color:var(--color-ink)">
         <div class="cta__inner" style="padding:var(--space-xl) clamp(1rem,4vw,1.5rem)">
           <form class="cta__form" id="serviceForm" name="estimate" data-netlify="true" novalidate>
@@ -177,7 +177,7 @@
           </a>
           <a class="service-cta__link" href="../../blog.html">
             <span class="service-cta__link-label">See what we write about</span>
-            <span class="service-cta__link-value">Visit the blog →</span>
+            <span class="service-cta__link-value">Visit the blog â†’</span>
           </a>
         </div>
       </div>
@@ -221,7 +221,7 @@
       </div>
     </div>
     <div class="site-footer__bottom">
-      <span>© 2026 Sandbox Web Studio. All rights reserved.</span>
+      <span>Â© 2026 Sandbox Web Studio. All rights reserved.</span>
       <span>Custom Website Development Agency in Chennai</span>
     </div>
   </footer>
@@ -259,10 +259,10 @@
             return;
           }
           if (phone && !/^[+0-9()\-\s.]{7,15}$/.test(phone)) {
-            if (status) status.textContent = 'Please add a valid phone number (digits only, 7–15 characters).';
+            if (status) status.textContent = 'Please add a valid phone number (digits only, 7â€“15 characters).';
             return;
           }
-          if (status) status.textContent = 'Sending…';
+          if (status) status.textContent = 'Sendingâ€¦';
           var btn = form.querySelector('button[type="submit"]');
           if (btn) btn.disabled = true;
           fetch('/', {
@@ -272,12 +272,12 @@
           }).then(function (res) {
             if (status) {
               status.textContent = res.ok
-                ? 'Thanks ' + name + ' — your request is on its way. We reply within one working day.'
-                : 'Something went wrong — please email sandbox.studio.in@gmail.com or call +91 73055 68806.';
+                ? 'Thanks ' + name + ' â€” your request is on its way. We reply within one working day.'
+                : 'Something went wrong â€” please email sandbox.studio.in@gmail.com or call +91 73055 68806.';
             }
             if (res.ok) form.reset();
           }).catch(function () {
-            if (status) status.textContent = 'Network error — please email sandbox.studio.in@gmail.com or call +91 73055 68806.';
+            if (status) status.textContent = 'Network error â€” please email sandbox.studio.in@gmail.com or call +91 73055 68806.';
           }).then(function () {
             if (btn) btn.disabled = false;
           });

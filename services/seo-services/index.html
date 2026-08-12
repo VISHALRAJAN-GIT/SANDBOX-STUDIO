@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-IN">
 <head>
   <meta charset="UTF-8" />
@@ -55,7 +55,7 @@
 
   <nav class="nav" id="nav" aria-label="Primary">
     <div class="nav__pill">
-      <a class="nav__brand" href="../../index.html" aria-label="Sandbox Studio — home">
+      <a class="nav__brand" href="../../index.html" aria-label="Sandbox Studio â€” home">
         <span class="nav__dot" aria-hidden="true"></span>sandbox<span class="nav__brand-end">.</span>
       </a>
       <ul class="nav__links" id="navLinks">
@@ -74,14 +74,14 @@
 
   <main id="main">
     <section class="service-hero" aria-labelledby="pageTitle">
-      <p class="section__label">Services · SEO</p>
+      <p class="section__label">Services Â· SEO</p>
       <h1 class="service-hero__title" id="pageTitle">Results-Driven SEO Services in Chennai</h1>
-      <p class="service-hero__sub">A brilliant website is useless if nobody finds it. We audit, fix, and build — technical SEO, keyword-led content, and local authority that compounds month after month.</p>
+      <p class="service-hero__sub">A brilliant website is useless if nobody finds it. We audit, fix, and build â€” technical SEO, keyword-led content, and local authority that compounds month after month.</p>
     </section>
 
     <section class="service-body">
       <h2>Rank Higher. Capture Chennai Search Traffic.</h2>
-      <p>When someone in Chennai searches for what you sell, the top results win the enquiry. Poor structure, slow pages, and thin content keep your business buried on page three. Our job is to get you into the handful of positions that matter — and keep you there.</p>
+      <p>When someone in Chennai searches for what you sell, the top results win the enquiry. Poor structure, slow pages, and thin content keep your business buried on page three. Our job is to get you into the handful of positions that matter â€” and keep you there.</p>
 
       <h3>Technical SEO Optimization</h3>
       <p>Crawlability, site speed, Core Web Vitals, structured data, and indexation fixes. We start here because no amount of content ranks on a site Google can&rsquo;t crawl properly.</p>
@@ -90,7 +90,7 @@
       <p>For a Chennai business, local search is the highest-intent traffic there is. We optimise your Google Business Profile, citations, and local landing pages to win the map pack.</p>
 
       <h3>Keyword &amp; Intent-Led Content</h3>
-      <p>Research-driven pages and articles that answer the questions your customers actually type — with internal linking that funnels authority to your money pages.</p>
+      <p>Research-driven pages and articles that answer the questions your customers actually type â€” with internal linking that funnels authority to your money pages.</p>
 
       <h3>Authority That Earns Links</h3>
       <p>Digital PR and content worth linking to. Rankings that rely on bought links evaporate; authority you earn compounds.</p>
@@ -99,7 +99,7 @@
       <div class="service-grid">
         <div class="service-card">
           <h3>Monthly ranking reports</h3>
-          <p>Plain-language updates on rankings, organic traffic, and conversions — not vanity dashboards.</p>
+          <p>Plain-language updates on rankings, organic traffic, and conversions â€” not vanity dashboards.</p>
         </div>
         <div class="service-card">
           <h3>Technical SEO audits</h3>
@@ -111,7 +111,7 @@
         </div>
         <div class="service-card">
           <h3>SEO-ready builds</h3>
-          <p>If your site is the problem, we build SEO best practice in from the start — see our <a href="../web-development/">website development</a> service.</p>
+          <p>If your site is the problem, we build SEO best practice in from the start â€” see our <a href="../web-development/">website development</a> service.</p>
         </div>
       </div>
 
@@ -136,7 +136,7 @@
             </div>
             <div class="cta__field">
               <label for="seo-city" style="color:var(--color-muted)">Where do your customers search?</label>
-              <input type="text" id="seo-city" name="city" placeholder="e.g. Chennai, T. Nagar, Chennai — India" style="background:var(--color-paper);color:var(--color-ink);border-color:var(--color-rule-2)" />
+              <input type="text" id="seo-city" name="city" placeholder="e.g. Chennai, T. Nagar, Chennai â€” India" style="background:var(--color-paper);color:var(--color-ink);border-color:var(--color-rule-2)" />
             </div>
             <div class="cta__field">
               <label for="seo-message" style="color:var(--color-muted)">What should you be found for?</label>
@@ -166,7 +166,7 @@
           </a>
           <a class="service-cta__link" href="../../blog.html#post-seo">
             <span class="service-cta__link-label">Related reading</span>
-            <span class="service-cta__link-value">SEO in 2026: what actually moves rankings →</span>
+            <span class="service-cta__link-value">SEO in 2026: what actually moves rankings â†’</span>
           </a>
         </div>
       </div>
@@ -210,7 +210,7 @@
       </div>
     </div>
     <div class="site-footer__bottom">
-      <span>© 2026 Sandbox Web Studio. All rights reserved.</span>
+      <span>Â© 2026 Sandbox Web Studio. All rights reserved.</span>
       <span>SEO Company in Chennai</span>
     </div>
   </footer>
@@ -248,10 +248,10 @@
             return;
           }
           if (phone && !/^[+0-9()\-\s.]{7,15}$/.test(phone)) {
-            if (status) status.textContent = 'Please add a valid phone number (digits only, 7–15 characters).';
+            if (status) status.textContent = 'Please add a valid phone number (digits only, 7â€“15 characters).';
             return;
           }
-          if (status) status.textContent = 'Sending…';
+          if (status) status.textContent = 'Sendingâ€¦';
           var btn = form.querySelector('button[type="submit"]');
           if (btn) btn.disabled = true;
           fetch('/', {
@@ -261,12 +261,12 @@
           }).then(function (res) {
             if (status) {
               status.textContent = res.ok
-                ? 'Thanks — your audit request is on its way. We reply within one working day.'
-                : 'Something went wrong — please email sandbox.studio.in@gmail.com or call +91 73055 68806.';
+                ? 'Thanks â€” your audit request is on its way. We reply within one working day.'
+                : 'Something went wrong â€” please email sandbox.studio.in@gmail.com or call +91 73055 68806.';
             }
             if (res.ok) form.reset();
           }).catch(function () {
-            if (status) status.textContent = 'Network error — please email sandbox.studio.in@gmail.com or call +91 73055 68806.';
+            if (status) status.textContent = 'Network error â€” please email sandbox.studio.in@gmail.com or call +91 73055 68806.';
           }).then(function () {
             if (btn) btn.disabled = false;
           });
